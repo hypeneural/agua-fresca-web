@@ -1,5 +1,5 @@
 
-import { Droplet, Waves, Filter, Wrench, ShoppingBag, Sparkles, Leaf, Shield } from "lucide-react";
+import { Droplet, Waves, Filter, Wrench, ShoppingBag, Sparkles, Leaf, Shield, Phone, Mail, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
