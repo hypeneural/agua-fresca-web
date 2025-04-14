@@ -1,4 +1,3 @@
-
 import { Droplet, Waves, Filter, Wrench, ShoppingBag, Sparkles, Leaf, Shield, Phone, Mail, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,7 +15,6 @@ const Index = () => {
       <Navbar />
       <WhatsAppButton />
       
-      {/* Hero Section */}
       <HeroSection />
       
       {/* About Section */}
@@ -26,20 +24,20 @@ const Index = () => {
             <div className="order-2 lg:order-1">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 pb-3 title-underline">Sobre a Maicon Piscinas</h2>
               <p className="text-gray-700 mb-4">
-                Desde 2005, a Maicon Piscinas se destaca no mercado de piscinas em Santa Catarina, 
-                oferecendo soluções completas que vão desde a instalação até a manutenção.
-              </p>
-              <p className="text-gray-700 mb-4">
-                Nossa missão é proporcionar momentos de lazer e bem-estar através de produtos e serviços 
-                de qualidade, com atendimento personalizado e excelência técnica.
+                A Maicon Piscinas é uma empresa referência em manutenção de piscinas, limpeza de piscinas, 
+                instalação de equipamentos e reparos de piscinas em Tijucas, Santa Catarina. Com 6 anos de 
+                experiência no mercado, somos especializados em proporcionar soluções completas para piscinas, 
+                garantindo um serviço de qualidade e segurança para nossos clientes.
               </p>
               <p className="text-gray-700 mb-6">
-                Contamos com uma equipe de profissionais especializados e comprometidos em oferecer 
-                as melhores soluções para nossos clientes, sempre com foco na satisfação e na qualidade.
+                Nossa missão é manter sua piscina sempre em perfeito estado, oferecendo serviços de manutenção 
+                de piscinas, reparos e instalações com a mais alta qualidade. Trabalhamos com produtos de alta 
+                qualidade, equipamentos modernos e uma equipe técnica especializada para entregar resultados 
+                rápidos e eficazes.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-pool-600">15+</div>
+                  <div className="text-3xl font-bold text-pool-600">6+</div>
                   <div className="text-gray-500 text-sm">Anos de Experiência</div>
                 </div>
                 <div className="text-center">
@@ -79,7 +77,7 @@ const Index = () => {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline-center">Nossos Serviços</h2>
             <p className="text-gray-600">
-              Oferecemos soluções completas para sua piscina, desde a instalação até a manutenção periódica, 
+              Oferecemos soluções completas para sua piscina, desde a instalação até a manutenção, 
               garantindo a qualidade e durabilidade do seu investimento.
             </p>
           </div>
@@ -106,23 +104,23 @@ const Index = () => {
               icon={Wrench}
             />
             <ServiceCard 
-              title="Venda de Produtos" 
-              description="Ampla linha de produtos químicos, acessórios e equipamentos para piscinas das melhores marcas."
-              icon={ShoppingBag}
-            />
-            <ServiceCard 
-              title="Limpeza e Tratamento" 
-              description="Serviços de limpeza, tratamento e manutenção regular para manter sua piscina sempre em perfeitas condições."
+              title="Iluminação e Hidromassagem" 
+              description="Instalação de sistemas de iluminação e hidromassagem para maior conforto e elegância."
               icon={Sparkles}
             />
             <ServiceCard 
-              title="Troca de Areia" 
-              description="Substituição periódica da areia do filtro para garantir o funcionamento eficiente do sistema de filtragem."
+              title="Recuperação de Água Verde" 
+              description="Tratamento especializado para recuperar piscinas com água verde, devolvendo a qualidade e transparência."
               icon={Leaf}
             />
             <ServiceCard 
-              title="Capas de Proteção" 
-              description="Capas de proteção sob medida para maior segurança e conservação da água da sua piscina."
+              title="Instalação de Aquecimentos" 
+              description="Instalação de sistemas de aquecimento elétrico, solar e trocador de calor para sua piscina."
+              icon={ShoppingBag}
+            />
+            <ServiceCard 
+              title="Instalação de Gerador de Cloro" 
+              description="Instalação de sistema automático de geração de cloro para tratamento contínuo da água."
               icon={Shield}
             />
           </div>
@@ -135,96 +133,47 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Projects Section */}
-      <section id="projetos" className="section-padding bg-gradient-to-b from-white to-gray-50">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline-center">Projetos Realizados</h2>
-            <p className="text-gray-600">
-              Confira alguns dos nossos projetos concluídos e inspire-se para transformar o seu espaço.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ProjectCard
-              title="Piscina Residencial em Jurerê"
-              description="Projeto completo de piscina e área de lazer para residência de alto padrão."
-              image="https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            />
-            <ProjectCard
-              title="Condomínio em Florianópolis"
-              description="Piscina coletiva com deck molhado e sistema de aquecimento solar."
-              image="https://images.unsplash.com/photo-1536745511564-a5fa6e596e7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
-            />
-            <ProjectCard
-              title="Hotel em Balneário Camboriú"
-              description="Projeto de piscina de borda infinita com vista para o mar."
-              image="https://images.unsplash.com/photo-1518172001620-cd0e03e41ff4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            />
-            <ProjectCard
-              title="Spa Residencial em Itapema"
-              description="Instalação de spa integrado com piscina e cascata."
-              image="https://images.unsplash.com/photo-1542425967-699db6ff3626?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            />
-            <ProjectCard
-              title="Área de Lazer em Chapecó"
-              description="Projeto completo de área de lazer com piscina, deck e churrasqueira."
-              image="https://images.unsplash.com/photo-1562700121-e79abf0e4711?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1635&q=80"
-            />
-            <ProjectCard
-              title="Piscina Coberta em Blumenau"
-              description="Piscina interna com sistema de aquecimento e tratamento automatizado."
-              image="https://images.unsplash.com/photo-1572331165267-854da2b10ccc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            />
-          </div>
-          
-          <div className="text-center mt-12">
-            <Button variant="outline" className="border-pool-500 text-pool-600 hover:bg-pool-50">
-              Ver Mais Projetos
-            </Button>
-          </div>
-        </div>
-      </section>
-      
       {/* Why Choose Us */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="bg-pool-600 rounded-xl p-8 md:p-12 shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-full h-full">
-              <div className="absolute right-0 bottom-0 opacity-20">
-                <svg width="350" height="350" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                  <path fill="#FFFFFF" d="M44.3,-76.8C57.9,-69.2,70,-57.9,78.5,-44.2C87,-30.5,91.9,-15.2,90.9,-0.6C90,14.1,83.1,28.2,74.4,40.9C65.7,53.6,55.2,65,42.4,72.7C29.6,80.5,14.8,84.5,0.1,84.4C-14.6,84.3,-29.2,80,-42.2,72.3C-55.3,64.5,-66.7,53.3,-73.8,40C-80.9,26.7,-83.6,11.1,-82.6,-3.5C-81.6,-18.2,-77,-35.9,-67.6,-48.9C-58.3,-61.8,-44.2,-70,-30.3,-76.5C-16.4,-83,-8.2,-87.9,3.8,-95C15.8,-102.2,31.5,-112.5,42,-104.8C52.5,-97.1,57.8,-71.4,58.7,-70.6C59.7,-69.7,64.2,-93.6,64.1,-94.4C64,-95.2,58.4,-73,44.3,-76.8Z" transform="translate(100 100)" />
-                </svg>
-              </div>
-            </div>
             <div className="relative z-10">
               <div className="text-center text-white max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Por que escolher a Maicon Piscinas?</h2>
-                <p className="text-white/80 mb-10">
-                  Mais de 15 anos de experiência, compromisso com qualidade e a satisfação garantida dos nossos clientes.
-                </p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
-                  <div className="font-bold text-2xl mb-2">01</div>
-                  <h3 className="text-xl font-semibold mb-3">Profissionais Especializados</h3>
+                  <h3 className="text-xl font-semibold mb-3">Compromisso com a Qualidade</h3>
                   <p className="text-white/80">
-                    Nossa equipe é composta por profissionais treinados e certificados, garantindo um serviço de alta qualidade.
+                    Garantimos que todos os serviços atendem aos mais altos padrões de qualidade, 
+                    utilizando os melhores produtos e técnicas para resultados duradouros.
                   </p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
-                  <div className="font-bold text-2xl mb-2">02</div>
-                  <h3 className="text-xl font-semibold mb-3">Atendimento Personalizado</h3>
+                  <h3 className="text-xl font-semibold mb-3">Satisfação do Cliente</h3>
                   <p className="text-white/80">
-                    Cada projeto é único e recebe atenção especial, com soluções personalizadas para as suas necessidades.
+                    Nosso objetivo é a satisfação total dos nossos clientes, oferecendo serviços 
+                    personalizados com atenção especial às suas necessidades.
                   </p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
-                  <div className="font-bold text-2xl mb-2">03</div>
-                  <h3 className="text-xl font-semibold mb-3">Garantia de Satisfação</h3>
+                  <h3 className="text-xl font-semibold mb-3">Profissionalismo e Ética</h3>
                   <p className="text-white/80">
-                    Trabalhamos com o compromisso de entregar resultados que superem as expectativas dos nossos clientes.
+                    Atuamos com transparência, respeito e responsabilidade em todas as nossas relações.
+                  </p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
+                  <h3 className="text-xl font-semibold mb-3">Inovação e Tecnologia</h3>
+                  <p className="text-white/80">
+                    Buscamos sempre novas tecnologias para oferecer soluções mais eficazes e eficientes.
+                  </p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white">
+                  <h3 className="text-xl font-semibold mb-3">Sustentabilidade</h3>
+                  <p className="text-white/80">
+                    Valorizamos práticas que promovem a preservação ambiental, utilizando produtos 
+                    sustentáveis e métodos que garantem a saúde e segurança de nossos clientes.
                   </p>
                 </div>
               </div>
@@ -244,42 +193,18 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <TestimonialCard
-              name="Roberto Almeida"
-              location="Florianópolis, SC"
-              content="Excelente trabalho na instalação da minha piscina. Profissionais competentes e atenciosos. O resultado ficou melhor do que eu esperava!"
+              name="Carlos M."
+              location="Tijucas, SC"
+              content="O Maicon fez um trabalho excelente na minha piscina! A limpeza e manutenção estão impecáveis, e o atendimento é sempre atencioso e rápido."
               rating={5}
             />
             <TestimonialCard
-              name="Mariana Costa"
-              location="Balneário Camboriú, SC"
-              content="Contratei a manutenção mensal e estou muito satisfeita. A piscina sempre está impecável e o atendimento é sempre pontual e eficiente."
+              name="Maria J."
+              location="Tijucas, SC"
+              content="O serviço de recuperação de água verde foi surpreendente! Minha piscina ficou renovada e super limpa, com um preço justo. Super recomendo!"
               rating={5}
-            />
-            <TestimonialCard
-              name="Carlos Eduardo"
-              location="Itajaí, SC"
-              content="A reforma da minha piscina antiga ficou perfeita. Cumpriram o prazo e o orçamento como combinado. Recomendo a todos!"
-              rating={4}
-            />
-            <TestimonialCard
-              name="Fernanda Silva"
-              location="Joinville, SC"
-              content="Instalaram o sistema de aquecimento na minha piscina e agora posso usá-la o ano todo. Profissionais muito qualificados e prestativos."
-              rating={5}
-            />
-            <TestimonialCard
-              name="Paulo Mendes"
-              location="Blumenau, SC"
-              content="Ótima experiência com a equipe da Maicon Piscinas. A manutenção é feita com excelência e o atendimento é sempre cordial."
-              rating={5}
-            />
-            <TestimonialCard
-              name="Juliana Martins"
-              location="São José, SC"
-              content="Excelente trabalho na instalação da piscina no nosso condomínio. Todos os moradores estão muito satisfeitos com o resultado."
-              rating={4}
             />
           </div>
         </div>
@@ -367,6 +292,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-white text-pool-600 hover:bg-gray-100"
+                onClick={() => window.location.href = "tel:+5548999232642"}
               >
                 Solicitar Orçamento
               </Button>
@@ -374,6 +300,12 @@ const Index = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-white text-white hover:bg-white/10"
+                onClick={() => {
+                  const contactSection = document.getElementById("contato");
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Fale Conosco
               </Button>

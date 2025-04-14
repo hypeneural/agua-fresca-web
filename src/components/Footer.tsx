@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, Clock, Facebook, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -8,21 +8,26 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-6">
-              Maicon<span className="text-pool-400">Piscinas</span>
-            </h3>
+            <img src="https://maiconpiscinas.com.br/bio/logo.png" alt="Maicon Piscinas" className="h-12 mb-6" />
             <p className="mb-6 text-gray-300">
-              Soluções completas em piscinas para residências e empresas em toda Santa Catarina.
+              Soluções completas em piscinas para residências e empresas em Tijucas e região.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+              <a 
+                href="https://www.facebook.com/maicon_piscinas" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+              >
                 <Facebook size={20} />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+              <a 
+                href="https://www.instagram.com/maicon_piscinas" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+              >
                 <Instagram size={20} />
-              </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
-                <Youtube size={20} />
               </a>
             </div>
           </div>
@@ -35,8 +40,8 @@ const Footer = () => {
                 <Phone className="mr-3 w-5 h-5 text-pool-400 mt-1" />
                 <div>
                   <p className="text-gray-300">Telefone</p>
-                  <a href="tel:+5548999999999" className="hover:text-pool-400 transition-colors">
-                    (48) 99999-9999
+                  <a href="tel:+5548999232642" className="hover:text-pool-400 transition-colors">
+                    (48) 99923-2642
                   </a>
                 </div>
               </li>
@@ -53,7 +58,7 @@ const Footer = () => {
                 <MapPin className="mr-3 w-5 h-5 text-pool-400 mt-1" />
                 <div>
                   <p className="text-gray-300">Endereço</p>
-                  <p>Rua das Águas, 123 - Florianópolis/SC</p>
+                  <p>Tijucas-SC</p>
                 </div>
               </li>
               <li className="flex items-start">
