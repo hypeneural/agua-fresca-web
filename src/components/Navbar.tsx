@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -108,7 +107,12 @@ const Navbar = () => {
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
-          <div className={`p-2 rounded-full bg-pool-600/80 backdrop-blur-md border border-white/20 shadow-lg`}>
+          <div className={cn(
+            "p-2.5 rounded-full transition-all duration-300",
+            isScrolled 
+              ? "bg-pool-600 shadow-lg" 
+              : "bg-black/40 backdrop-blur-sm border border-white/20"
+          )}>
             {isOpen ? 
               <X size={24} className="text-white" /> : 
               <Menu size={24} className="text-white" />
@@ -117,14 +121,14 @@ const Navbar = () => {
         </motion.button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Improved styles */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="fixed inset-0 bg-gradient-to-b from-pool-800 to-pool-700 z-40 flex flex-col pt-24 px-6"
           >
             <nav className="flex flex-col space-y-6">

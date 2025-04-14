@@ -1,4 +1,3 @@
-
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -17,13 +16,13 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img src="https://maiconpiscinas.com.br/bio/logo.png" alt="Maicon Piscinas" className="h-12 mb-6" />
+            <img src="https://maiconpiscinas.com.br/bio/favicon.png" alt="Maicon Piscinas" className="h-12 mb-6" />
             <p className="mb-6 text-gray-300">
               Soluções completas em piscinas para residências e empresas em Tijucas e região.
             </p>
             <div className="flex space-x-4">
               <motion.a 
-                href="https://www.facebook.com/maicon_piscinas" 
+                href="https://www.facebook.com/maicon.piscineiro" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
