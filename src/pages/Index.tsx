@@ -1,5 +1,18 @@
-
-import { Droplet, Waves, Filter, Wrench, ShoppingBag, Sparkles, Leaf, Shield, Phone, Mail, Clock, Tool, Star, Zap, Lightbulb, Thermometer } from "lucide-react";
+import { 
+  Droplet, 
+  Waves, 
+  Filter, 
+  Wrench, 
+  ShoppingBag, 
+  Sparkles, 
+  Leaf, 
+  Shield, 
+  Phone, 
+  Mail, 
+  Clock, 
+  Thermometer, 
+  Zap 
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
@@ -141,7 +154,7 @@ const Index = () => {
             <ServiceCard 
               title="Instalação de Equipamentos" 
               description="Instalação profissional de bombas, filtros e demais equipamentos para garantir o funcionamento ideal da sua piscina."
-              icon={Tool}
+              icon={Wrench}
               delay={0.2}
             />
             <ServiceCard 
