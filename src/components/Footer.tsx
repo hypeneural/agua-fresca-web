@@ -1,39 +1,56 @@
 
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/5548999232642?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20os%20serviços%20da%20Maicon%20Piscinas", "_blank");
+  };
+
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="bg-gradient-to-b from-gray-900 to-pool-900 text-white pt-16 pb-8">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <img src="https://maiconpiscinas.com.br/bio/logo.png" alt="Maicon Piscinas" className="h-12 mb-6" />
             <p className="mb-6 text-gray-300">
               Soluções completas em piscinas para residências e empresas em Tijucas e região.
             </p>
             <div className="flex space-x-4">
-              <a 
+              <motion.a 
                 href="https://www.facebook.com/maicon_piscinas" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <Facebook size={20} />
-              </a>
-              <a 
+              </motion.a>
+              <motion.a 
                 href="https://www.instagram.com/maicon_piscinas" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <Instagram size={20} />
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-700">Contato</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
@@ -70,35 +87,47 @@ const Footer = () => {
                 </div>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-700">Serviços</h3>
             <ul className="space-y-2">
               {[
-                "Instalação de Piscinas",
-                "Instalação de Spas",
-                "Conjunto Filtrante",
-                "Manutenção de Bombas",
-                "Venda de Produtos",
                 "Limpeza e Tratamento",
+                "Instalação de Equipamentos",
+                "Iluminação e Hidromassagem",
+                "Recuperação de Água Verde",
+                "Aquecimentos",
+                "Gerador de Cloro",
                 "Troca de Areia",
                 "Capas de Proteção"
               ].map((service) => (
-                <li key={service}>
+                <motion.li 
+                  key={service}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
                   <a href="#servicos" className="text-gray-300 hover:text-pool-400 transition-colors flex items-center">
                     <span className="mr-2">›</span> {service}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Map */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <h3 className="text-xl font-semibold mb-6 pb-2 border-b border-gray-700">Área de Atendimento</h3>
-            <div className="w-full h-48 bg-gray-800 rounded-lg overflow-hidden">
+            <div className="w-full h-48 bg-gray-800 rounded-lg overflow-hidden mb-4">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d452458.00928335003!2d-49.303449387550555!3d-27.636102986044765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952749bfe17eb89f%3A0xd3d6e34c9fba2a18!2sFlorianópolis%2C%20SC!5e0!3m2!1spt-BR!2sbr!4v1649853646251!5m2!1spt-BR!2sbr" 
                 width="100%" 
@@ -110,10 +139,15 @@ const Footer = () => {
                 title="Mapa de Santa Catarina"
               />
             </div>
-            <p className="mt-4 text-gray-300 text-sm">
-              Atendemos toda região de Florianópolis e principais cidades de Santa Catarina.
-            </p>
-          </div>
+            <motion.button
+              onClick={handleWhatsAppClick}
+              className="bg-pool-600 hover:bg-pool-500 text-white py-2 px-4 rounded flex items-center justify-center w-full"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Solicitar Orçamento Agora
+            </motion.button>
+          </motion.div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">

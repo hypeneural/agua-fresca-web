@@ -1,5 +1,6 @@
 
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface TestimonialCardProps {
   name: string;
@@ -7,11 +8,22 @@ interface TestimonialCardProps {
   content: string;
   rating: number;
   image?: string;
+  delay?: number;
 }
 
-const TestimonialCard = ({ name, location, content, rating, image }: TestimonialCardProps) => {
+const TestimonialCard = ({ name, location, content, rating, image, delay = 0 }: TestimonialCardProps) => {
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={{ 
+        y: -5, 
+        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+        transition: { duration: 0.2 }
+      }}
+      className="bg-white rounded-xl p-6 shadow-md border border-gray-100"
+    >
       <div className="flex gap-1 mb-4">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
@@ -40,7 +52,7 @@ const TestimonialCard = ({ name, location, content, rating, image }: Testimonial
           <p className="text-sm text-gray-500">{location}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
