@@ -49,7 +49,7 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
           className="flex items-center relative z-20"
         >
-          <img src="https://maiconpiscinas.com.br/bio/logo.png" alt="Maicon Piscinas" className="h-12" />
+          <img src="https://maiconpiscinas.com.br/bio/favicon.png" alt="Maicon Piscinas" className="h-12" />
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -100,14 +100,20 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Toggle - Improved styles */}
         <motion.button 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="md:hidden text-white relative z-20" 
+          className="md:hidden relative z-20" 
           onClick={toggleMenu}
+          aria-label="Toggle Menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <div className={`p-2 rounded-full bg-pool-600/80 backdrop-blur-md border border-white/20 shadow-lg`}>
+            {isOpen ? 
+              <X size={24} className="text-white" /> : 
+              <Menu size={24} className="text-white" />
+            }
+          </div>
         </motion.button>
       </div>
 

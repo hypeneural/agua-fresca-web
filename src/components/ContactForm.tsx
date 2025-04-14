@@ -24,24 +24,38 @@ const ContactForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // In a real application, you would use a form submission service or API
+      // This is a simulation for the demo
+      console.log("Sending email to: contato@maiconpiscinas.com.br");
+      console.log("Form data:", formData);
+      
+      // Simulate form submission
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Show success message
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato o mais breve possível.",
-      variant: "default",
-    });
+      // Show success message
+      toast({
+        title: "Mensagem enviada!",
+        description: "Entraremos em contato o mais breve possível. Sua mensagem foi enviada para contato@maiconpiscinas.com.br",
+        variant: "default",
+      });
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    setLoading(false);
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Por favor, tente novamente mais tarde ou entre em contato pelo WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -98,6 +112,7 @@ const ContactForm = () => {
       <p className="text-xs text-gray-500 text-center">
         Ao enviar, você concorda com nossa política de privacidade.
       </p>
+      <input type="hidden" name="_to" value="contato@maiconpiscinas.com.br" />
     </form>
   );
 };

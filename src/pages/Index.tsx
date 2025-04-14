@@ -1,3 +1,4 @@
+
 import { 
   Droplet, 
   Waves, 
@@ -20,6 +21,7 @@ import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import ContactForm from "@/components/ContactForm";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BeforeAfterComparison from "@/components/BeforeAfterComparison";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import TrustBadges from "@/components/TrustBadges";
@@ -219,9 +221,32 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Before/After Comparison */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <motion.div 
+            className="text-center max-w-2xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline-center">Transformações Incríveis</h2>
+            <p className="text-gray-600">
+              Veja o antes e depois dos nossos serviços e descubra como podemos transformar sua piscina.
+            </p>
+          </motion.div>
+          
+          <BeforeAfterComparison 
+            beforeImage="https://maiconpiscinas.com.br/antes.png"
+            afterImage="https://maiconpiscinas.com.br/depois.png"
+            className="max-w-4xl mx-auto"
+          />
+        </div>
+      </section>
       
       {/* Why Choose Us */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding">
         <div className="container-custom">
           <motion.div 
             className="bg-gradient-to-r from-pool-700 to-pool-600 rounded-xl p-8 md:p-12 shadow-xl relative overflow-hidden"
@@ -310,7 +335,7 @@ const Index = () => {
       </section>
       
       {/* Testimonials */}
-      <section id="depoimentos" className="section-padding">
+      <section id="depoimentos" className="section-padding bg-gray-50">
         <div className="container-custom">
           <motion.div 
             className="text-center max-w-2xl mx-auto mb-16"
@@ -348,7 +373,7 @@ const Index = () => {
       <FAQ />
       
       {/* Contact Section */}
-      <section id="contato" className="section-padding bg-gray-50">
+      <section id="contato" className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <motion.div
@@ -440,7 +465,7 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-12">
+      <section className="py-12 bg-gray-50">
         <div className="container-custom">
           <motion.div 
             className="bg-gradient-to-r from-pool-700 to-pool-600 rounded-xl py-12 px-8 text-center text-white shadow-xl"
@@ -489,7 +514,7 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="border-white text-white hover:bg-white/10"
+                  className="bg-pool-600 text-white border-white hover:bg-pool-700"
                   onClick={() => {
                     const contactSection = document.getElementById("contato");
                     if (contactSection) {
