@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,18 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // When menu is open, prevent scrolling of the background content
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const handlePhoneClick = () => {
     window.location.href = "tel:+5548999232642";
@@ -99,7 +112,7 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        {/* Mobile Navigation Toggle - Improved styles */}
+        {/* Mobile Navigation Toggle */}
         <motion.button 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -121,7 +134,7 @@ const Navbar = () => {
         </motion.button>
       </div>
 
-      {/* Mobile Menu - Improved styles */}
+      {/* Mobile Menu - Fixed the transparency issue */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -129,7 +142,8 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 bg-gradient-to-b from-pool-800 to-pool-700 z-40 flex flex-col pt-24 px-6"
+            className="fixed inset-0 bg-pool-800 z-40 flex flex-col pt-24 px-6"
+            style={{ backgroundColor: "#0c4a6e" }} /* Ensure solid background color */
           >
             <nav className="flex flex-col space-y-6">
               {navItems.map((item, index) => (
