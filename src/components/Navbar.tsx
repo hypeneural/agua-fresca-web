@@ -47,9 +47,7 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled 
-          ? "bg-gradient-to-r from-pool-800 to-pool-700 shadow-md py-2" 
-          : "bg-transparent backdrop-blur-sm bg-black/20 py-4"
+        "bg-gradient-to-r from-pool-800 to-pool-700 shadow-md py-2"
       )}
     >
       <div className="container-custom flex justify-between items-center">
@@ -116,12 +114,7 @@ const Navbar = () => {
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
-          <div className={cn(
-            "p-2.5 rounded-full transition-all duration-300",
-            isScrolled 
-              ? "bg-pool-600 shadow-lg" 
-              : "bg-black/40 backdrop-blur-sm border border-white/20"
-          )}>
+          <div className="p-2.5 rounded-full bg-pool-600 shadow-lg">
             {isOpen ? 
               <X size={24} className="text-white" /> : 
               <Menu size={24} className="text-white" />
@@ -137,8 +130,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 bg-pool-800 z-40 flex flex-col pt-24 px-6"
-            style={{ backgroundColor: "#0c4a6e" }}
+            className="fixed inset-0 bg-pool-700 z-40 flex flex-col pt-24 px-6"
           >
             <nav className="flex flex-col space-y-6">
               {navItems.map((item, index) => (

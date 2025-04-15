@@ -6,13 +6,13 @@ const TrustBadges = () => {
   const badges = [
     {
       icon: Star,
-      title: "4.9/5 Avaliação",
+      title: "5/5 Avaliação",
       description: "Excelência reconhecida pelos clientes"
     },
     {
       icon: Shield,
-      title: "Garantia de Serviço",
-      description: "Satisfação garantida em todos os serviços"
+      title: "+200 Projetos Realizados",
+      description: "Experiência comprovada em manutenção de piscinas"
     },
     {
       icon: ThumbsUp,
