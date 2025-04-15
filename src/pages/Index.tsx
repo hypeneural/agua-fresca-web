@@ -62,6 +62,14 @@ const Index = () => {
                   whileHover={{ y: -5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
+                  <div className="text-3xl font-bold text-pool-600">6+</div>
+                  <div className="text-gray-500 text-sm">Anos de Experiência</div>
+                </motion.div>
+                <motion.div 
+                  className="text-center"
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
                   <div className="text-3xl font-bold text-pool-600">200+</div>
                   <div className="text-gray-500 text-sm">Projetos Realizados</div>
                 </motion.div>
@@ -161,7 +169,7 @@ const Index = () => {
             />
             <ServiceCard 
               title="Troca de Areia" 
-              description="Substitui��ão do elemento filtrante garantindo eficiência na filtragem e água mais limpa."
+              description="Substituião do elemento filtrante garantindo eficiência na filtragem e água mais limpa."
               icon={Filter}
               delay={0.6}
             />
