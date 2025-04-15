@@ -52,8 +52,8 @@ const Index = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-6 pb-3 title-underline">Sobre a Maicon Piscinas</h2>
               <p className="text-gray-700 mb-4">
                 A Maicon Piscinas é uma empresa referência em manutenção de piscinas, limpeza de piscinas, 
-                instalação de equipamentos e reparos de piscinas em Tijucas, Santa Catarina. Com 6 anos de 
-                experiência no mercado, somos especializados em proporcionar soluções completas para piscinas, 
+                instalação de equipamentos e reparos de piscinas em Tijucas, Santa Catarina. Com <strong>6+ anos de experiência</strong> no mercado, 
+                somos especializados em proporcionar soluções completas para piscinas, 
                 garantindo um serviço de qualidade e segurança para nossos clientes.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -161,7 +161,7 @@ const Index = () => {
             />
             <ServiceCard 
               title="Troca de Areia" 
-              description="Substituição do elemento filtrante garantindo eficiência na filtragem e água mais limpa."
+              description="Substitui��ão do elemento filtrante garantindo eficiência na filtragem e água mais limpa."
               icon={Filter}
               delay={0.6}
             />
