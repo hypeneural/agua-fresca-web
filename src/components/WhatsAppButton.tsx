@@ -1,5 +1,5 @@
 
-import { Whatsapp } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const WhatsAppButton = () => {
@@ -24,7 +24,7 @@ const WhatsAppButton = () => {
       }}
       whileTap={{ scale: 0.9 }}
     >
-      <Whatsapp className="w-6 h-6" />
+      <MessageCircle className="w-6 h-6" />
       <motion.span 
         className="absolute rounded-full bg-green-400 w-full h-full left-0 top-0"
         animate={{ 
