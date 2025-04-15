@@ -11,7 +11,7 @@ const TrustBadges = () => {
     },
     {
       icon: Shield,
-      title: "+200 Projetos Realizados",
+      title: "200+ Projetos Realizados",
       description: "Experiência comprovada em manutenção de piscinas"
     },
     {

@@ -1,4 +1,3 @@
-
 import { 
   Droplet, 
   Waves, 
@@ -39,10 +38,8 @@ const Index = () => {
       
       <HeroSection />
       
-      {/* Trust Badges */}
       <TrustBadges />
       
-      {/* About Section */}
       <section id="sobre" className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -59,27 +56,13 @@ const Index = () => {
                 experiência no mercado, somos especializados em proporcionar soluções completas para piscinas, 
                 garantindo um serviço de qualidade e segurança para nossos clientes.
               </p>
-              <p className="text-gray-700 mb-6">
-                Nossa missão é manter sua piscina sempre em perfeito estado, oferecendo serviços de manutenção 
-                de piscinas, reparos e instalações com a mais alta qualidade. Trabalhamos com produtos de alta 
-                qualidade, equipamentos modernos e uma equipe técnica especializada para entregar resultados 
-                rápidos e eficazes.
-              </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <motion.div 
                   className="text-center"
                   whileHover={{ y: -5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <div className="text-3xl font-bold text-pool-600">6+</div>
-                  <div className="text-gray-500 text-sm">Anos de Experiência</div>
-                </motion.div>
-                <motion.div 
-                  className="text-center"
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="text-3xl font-bold text-pool-600">500+</div>
+                  <div className="text-3xl font-bold text-pool-600">200+</div>
                   <div className="text-gray-500 text-sm">Projetos Realizados</div>
                 </motion.div>
                 <motion.div 
@@ -130,7 +113,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Services Section */}
       <section id="servicos" className="section-padding">
         <div className="container-custom">
           <motion.div 
@@ -221,8 +203,7 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Before/After Comparison */}
+      
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <motion.div 
@@ -245,7 +226,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Why Choose Us */}
       <section className="section-padding">
         <div className="container-custom">
           <motion.div 
@@ -334,7 +314,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Testimonials */}
       <section id="depoimentos" className="section-padding bg-gray-50">
         <div className="container-custom">
           <motion.div 
@@ -369,10 +348,8 @@ const Index = () => {
         </div>
       </section>
       
-      {/* FAQ Section */}
       <FAQ />
       
-      {/* Contact Section */}
       <section id="contato" className="section-padding">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -380,11 +357,12 @@ const Index = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
+              className="lg:col-span-2"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 pb-3 title-underline">Entre em Contato</h2>
               <p className="text-gray-700 mb-8">
                 Estamos prontos para atender você e oferecer as melhores soluções para sua piscina. 
-                Preencha o formulário ao lado ou entre em contato diretamente pelos nossos canais de atendimento.
+                Entre em contato diretamente pelos nossos canais de atendimento.
               </p>
               
               <motion.div 
@@ -450,21 +428,10 @@ const Index = () => {
                 </p>
               </div>
             </motion.div>
-            
-            <motion.div 
-              className="bg-white rounded-xl shadow-lg p-8 border border-gray-100"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-2xl font-semibold mb-6 text-center">Envie sua Mensagem</h3>
-              <ContactForm />
-            </motion.div>
           </div>
         </div>
       </section>
       
-      {/* CTA Section */}
       <section className="py-12 bg-gray-50">
         <div className="container-custom">
           <motion.div 
