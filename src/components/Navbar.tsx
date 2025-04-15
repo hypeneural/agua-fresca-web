@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -20,7 +19,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // When menu is open, prevent scrolling of the background content
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -64,7 +62,6 @@ const Navbar = () => {
           <img src="https://maiconpiscinas.com.br/bio/favicon.png" alt="Maicon Piscinas" className="h-12" />
         </motion.a>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
           {navItems.map((item, index) => (
             <motion.a 
@@ -112,7 +109,6 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        {/* Mobile Navigation Toggle */}
         <motion.button 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -134,7 +130,6 @@ const Navbar = () => {
         </motion.button>
       </div>
 
-      {/* Mobile Menu - Fixed the transparency issue */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -143,7 +138,7 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="fixed inset-0 bg-pool-800 z-40 flex flex-col pt-24 px-6"
-            style={{ backgroundColor: "#0c4a6e" }} /* Ensure solid background color */
+            style={{ backgroundColor: "#0c4a6e" }}
           >
             <nav className="flex flex-col space-y-6">
               {navItems.map((item, index) => (

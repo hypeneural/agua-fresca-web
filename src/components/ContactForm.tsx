@@ -1,118 +1,121 @@
+import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button"
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Nome deve ter pelo menos 2 caracteres.",
+  }),
+  email: z.string().email({
+    message: "Por favor, insira um email válido.",
+  }),
+  phone: z.string().min(10, {
+    message: "Por favor, insira um número de telefone válido.",
+  }),
+  message: z.string().min(10, {
+    message: "A mensagem deve ter pelo menos 10 caracteres.",
+  }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
   });
-  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
+  const onSubmit: SubmitHandler<FormValues> = async (values) => {
     try {
-      // In a real application, you would use a form submission service or API
-      // This is a simulation for the demo
-      console.log("Sending email to: contato@maiconpiscinas.com.br");
-      console.log("Form data:", formData);
-      
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Show success message
-      toast({
-        title: "Mensagem enviada!",
-        description: "Entraremos em contato o mais breve possível. Sua mensagem foi enviada para contato@maiconpiscinas.com.br",
-        variant: "default",
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       });
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
-    } catch (error) {
-      toast({
-        title: "Erro ao enviar mensagem",
-        description: "Por favor, tente novamente mais tarde ou entre em contato pelo WhatsApp.",
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
+      if (response.ok) {
+        setSuccessMessage('Mensagem enviada com sucesso!');
+        setErrorMessage(null);
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || 'Ocorreu um erro ao enviar a mensagem.');
+        setSuccessMessage(null);
+      }
+    } catch (error: any) {
+      setErrorMessage(error.message || 'Ocorreu um erro ao enviar a mensagem.');
+      setSuccessMessage(null);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <div>
+        <Input 
+          id="name"
+          placeholder="Seu Nome"
+          type="text"
+          {...form.register("name")}
+        />
+        {form.formState.errors.name && (
+          <p className="text-red-500 text-sm mt-1">{form.formState.errors.name.message}</p>
+        )}
+      </div>
       <div>
         <Input
-          type="text"
-          placeholder="Nome completo"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="border-gray-300 focus:border-pool-500"
-        />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Input
+          id="email"
+          placeholder="Seu Email"
           type="email"
-          placeholder="E-mail"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="border-gray-300 focus:border-pool-500"
+          {...form.register("email")}
         />
+        {form.formState.errors.email && (
+          <p className="text-red-500 text-sm mt-1">{form.formState.errors.email.message}</p>
+        )}
+      </div>
+      <div>
         <Input
+          id="phone"
+          placeholder="Seu Telefone"
           type="tel"
-          placeholder="Telefone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-          className="border-gray-300 focus:border-pool-500"
+          {...form.register("phone")}
         />
+        {form.formState.errors.phone && (
+          <p className="text-red-500 text-sm mt-1">{form.formState.errors.phone.message}</p>
+        )}
       </div>
       <div>
         <Textarea
-          placeholder="Mensagem"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          rows={5}
-          className="border-gray-300 focus:border-pool-500 resize-none"
+          id="message"
+          placeholder="Sua Mensagem"
+          rows={4}
+          {...form.register("message")}
         />
+        {form.formState.errors.message && (
+          <p className="text-red-500 text-sm mt-1">{form.formState.errors.message.message}</p>
+        )}
       </div>
-      <Button 
-        type="submit" 
-        disabled={loading}
-        className="w-full bg-pool-600 hover:bg-pool-700"
-      >
-        {loading ? "Enviando..." : "Enviar Mensagem"}
-      </Button>
-      <p className="text-xs text-gray-500 text-center">
-        Ao enviar, você concorda com nossa política de privacidade.
-      </p>
-      <input type="hidden" name="_to" value="contato@maiconpiscinas.com.br" />
+      <Button type="submit" className="w-full">Enviar Mensagem</Button>
+
+      {successMessage && (
+        <div className="text-green-500 text-center">{successMessage}</div>
+      )}
+      {errorMessage && (
+        <div className="text-red-500 text-center">{errorMessage}</div>
+      )}
     </form>
   );
 };
