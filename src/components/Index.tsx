@@ -4,8 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
-import TestimonialCard from "@/components/TestimonialCard";
-import ProjectCard from "@/components/ProjectCard";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import ContactForm from "@/components/ContactForm";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Button } from "@/components/ui/button";
+
+export { TestimonialsCarousel, ScrollToTop };
