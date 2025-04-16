@@ -7,7 +7,7 @@ const WhatsAppButton = () => {
       href="https://api.whatsapp.com/send/?phone=5548999232642"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors duration-300"
+      className="fixed bottom-6 left-6 z-50 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors duration-300"
       aria-label="Entre em contato via WhatsApp"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
@@ -45,6 +45,21 @@ const WhatsAppButton = () => {
         }}
         transition={{ 
           duration: 2,
+          repeat: Infinity,
+          repeatType: "loop"
+        }}
+      />
+      
+      {/* Enhanced water-like animation */}
+      <motion.div 
+        className="absolute -inset-1 rounded-full"
+        style={{ background: "rgba(20, 220, 100, 0.2)" }}
+        animate={{ 
+          scale: [1, 1.5, 1],
+          opacity: [0.2, 0.5, 0.2],
+        }}
+        transition={{ 
+          duration: 3,
           repeat: Infinity,
           repeatType: "loop"
         }}

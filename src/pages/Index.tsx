@@ -1,4 +1,3 @@
-
 import { 
   Droplet, 
   Waves, 
@@ -12,7 +11,9 @@ import {
   Mail, 
   Clock, 
   Thermometer, 
-  Zap 
+  Zap,
+  Award,
+  Headphones
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -29,6 +30,7 @@ import FAQ from "@/components/FAQ";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import SectionDivider from "@/components/SectionDivider";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
+import WaterBackground from "@/components/WaterBackground";
 
 const Index = () => {
   const handleWhatsAppClick = () => {
@@ -51,6 +53,7 @@ const Index = () => {
       <TrustBadges />
       
       <section id="sobre" className="section-padding bg-gray-50 relative">
+        <WaterBackground intensity="light" className="opacity-50" />
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div 
@@ -268,9 +271,36 @@ const Index = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            {/* Decorative backgrounds */}
+            {/* Enhanced 3D water background effect */}
             <div className="absolute -top-24 -left-24 w-64 h-64 bg-pool-500/20 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-pool-400/20 rounded-full blur-3xl"></div>
+            
+            {/* Animated water bubbles */}
+            {[...Array(10)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full bg-white/10"
+                style={{
+                  width: Math.random() * 60 + 20,
+                  height: Math.random() * 60 + 20,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  filter: "blur(1px)"
+                }}
+                animate={{
+                  y: [0, -100 * Math.random() - 50],
+                  x: [0, 30 * Math.random() - 15],
+                  opacity: [0, 0.6, 0],
+                  scale: [0, 1]
+                }}
+                transition={{
+                  duration: Math.random() * 10 + 10,
+                  repeat: Infinity,
+                  delay: Math.random() * 5,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
             
             <div className="relative z-10">
               <motion.div 
@@ -282,69 +312,213 @@ const Index = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Por que escolher a Maicon Piscinas?</h2>
               </motion.div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <motion.div 
                   className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                    background: "rgba(255,255,255,0.15)"
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <h3 className="text-xl font-semibold mb-3">Compromisso com a Qualidade</h3>
-                  <p className="text-white/80">
-                    Garantimos que todos os serviços atendem aos mais altos padrões de qualidade, 
-                    utilizando os melhores produtos e técnicas para resultados duradouros.
-                  </p>
+                  <motion.div style={{ transform: "translateZ(20px)" }}>
+                    <h3 className="text-xl font-semibold mb-3">Compromisso com a Qualidade</h3>
+                    <p className="text-white/80">
+                      Garantimos que todos os serviços atendem aos mais altos padrões de qualidade, 
+                      utilizando os melhores produtos e técnicas para resultados duradouros.
+                    </p>
+                  </motion.div>
+                  
+                  {/* Water drop animation */}
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
+                    animate={{
+                      y: [0, 10, 0],
+                      opacity: [0.2, 0.5, 0.2]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
+                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
+                    </svg>
+                  </motion.div>
                 </motion.div>
+                
                 <motion.div 
                   className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                    background: "rgba(255,255,255,0.15)"
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <h3 className="text-xl font-semibold mb-3">Satisfação do Cliente</h3>
-                  <p className="text-white/80">
-                    Nosso objetivo é a satisfação total dos nossos clientes, oferecendo serviços 
-                    personalizados com atenção especial às suas necessidades.
-                  </p>
+                  <motion.div style={{ transform: "translateZ(20px)" }}>
+                    <h3 className="text-xl font-semibold mb-3">Satisfação do Cliente</h3>
+                    <p className="text-white/80">
+                      Nosso objetivo é a satisfação total dos nossos clientes, oferecendo serviços 
+                      personalizados com atenção especial às suas necessidades.
+                    </p>
+                  </motion.div>
+                  
+                  {/* Water drop animation */}
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
+                    animate={{
+                      y: [0, 10, 0],
+                      opacity: [0.2, 0.5, 0.2]
+                    }}
+                    transition={{ duration: 4, delay: 1, repeat: Infinity }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
+                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
+                    </svg>
+                  </motion.div>
                 </motion.div>
+                
                 <motion.div 
                   className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                    background: "rgba(255,255,255,0.15)"
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <h3 className="text-xl font-semibold mb-3">Profissionalismo e Ética</h3>
-                  <p className="text-white/80">
-                    Atuamos com transparência, respeito e responsabilidade em todas as nossas relações.
-                  </p>
+                  <motion.div style={{ transform: "translateZ(20px)" }}>
+                    <h3 className="text-xl font-semibold mb-3">Profissionalismo e Ética</h3>
+                    <p className="text-white/80">
+                      Atuamos com transparência, respeito e responsabilidade em todas as nossas relações.
+                    </p>
+                  </motion.div>
+                  
+                  {/* Water drop animation */}
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
+                    animate={{
+                      y: [0, 10, 0],
+                      opacity: [0.2, 0.5, 0.2]
+                    }}
+                    transition={{ duration: 3.5, delay: 0.5, repeat: Infinity }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
+                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
+                    </svg>
+                  </motion.div>
                 </motion.div>
+                
                 <motion.div 
                   className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                    background: "rgba(255,255,255,0.15)"
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <h3 className="text-xl font-semibold mb-3">Inovação e Tecnologia</h3>
-                  <p className="text-white/80">
-                    Buscamos sempre novas tecnologias para oferecer soluções mais eficazes e eficientes.
-                  </p>
+                  <motion.div style={{ transform: "translateZ(20px)" }}>
+                    <h3 className="text-xl font-semibold mb-3">Inovação e Tecnologia</h3>
+                    <p className="text-white/80">
+                      Buscamos sempre novas tecnologias para oferecer soluções mais eficazes e eficientes.
+                    </p>
+                  </motion.div>
+                  
+                  {/* Water drop animation */}
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
+                    animate={{
+                      y: [0, 10, 0],
+                      opacity: [0.2, 0.5, 0.2]
+                    }}
+                    transition={{ duration: 4, delay: 1.5, repeat: Infinity }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
+                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
+                    </svg>
+                  </motion.div>
                 </motion.div>
+                
                 <motion.div 
                   className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                    background: "rgba(255,255,255,0.15)"
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <h3 className="text-xl font-semibold mb-3">Sustentabilidade</h3>
-                  <p className="text-white/80">
-                    Valorizamos práticas que promovem a preservação ambiental, utilizando produtos 
-                    sustentáveis e métodos que garantem a saúde e segurança de nossos clientes.
-                  </p>
+                  <motion.div style={{ transform: "translateZ(20px)" }}>
+                    <h3 className="text-xl font-semibold mb-3">Sustentabilidade</h3>
+                    <p className="text-white/80">
+                      Valorizamos práticas que promovem a preservação ambiental, utilizando produtos 
+                      sustentáveis e métodos que garantem a saúde e segurança de nossos clientes.
+                    </p>
+                  </motion.div>
+                  
+                  {/* Water drop animation */}
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
+                    animate={{
+                      y: [0, 10, 0],
+                      opacity: [0.2, 0.5, 0.2]
+                    }}
+                    transition={{ duration: 3.2, delay: 0.8, repeat: Infinity }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
+                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
+                    </svg>
+                  </motion.div>
+                </motion.div>
+                
+                <motion.div 
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                    background: "rgba(255,255,255,0.15)"
+                  }}
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <motion.div style={{ transform: "translateZ(20px)" }}>
+                    <h3 className="text-xl font-semibold mb-3">Atendimento Personalizado</h3>
+                    <p className="text-white/80">
+                      Cada cliente é único, por isso oferecemos soluções personalizadas adaptadas às suas 
+                      necessidades específicas e orçamento, com atendimento exclusivo.
+                    </p>
+                  </motion.div>
+                  
+                  {/* Water drop animation */}
+                  <motion.div 
+                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
+                    animate={{
+                      y: [0, 10, 0],
+                      opacity: [0.2, 0.5, 0.2]
+                    }}
+                    transition={{ duration: 3.8, delay: 1.2, repeat: Infinity }}
+                  >
+                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
+                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
+                    </svg>
+                  </motion.div>
                 </motion.div>
               </div>
             </div>
@@ -638,6 +812,36 @@ const Index = () => {
             padding-left: 1rem !important;
             padding-right: 1rem !important;
           }
+        }
+        
+        /* Enhanced 3D effects */
+        .card-3d {
+          transform-style: preserve-3d;
+          perspective: 1000px;
+        }
+        
+        /* Enhanced water effects */
+        .water-ripple {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .water-ripple::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 200%;
+          height: 200%;
+          transform: translate(-50%, -50%);
+          background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(14, 165, 233, 0) 60%);
+          border-radius: 100%;
+          animation: ripple 4s linear infinite;
+        }
+        
+        @keyframes ripple {
+          0% { transform: translate(-50%, -50%) scale(0); opacity: 0.5; }
+          100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
         }
         `}
       </style>
