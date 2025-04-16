@@ -9,7 +9,8 @@ const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange(value => {
+    // Using the modern API instead of the deprecated onChange
+    const unsubscribe = scrollYProgress.on("change", value => {
       setIsVisible(value > 0.2);
     });
     return () => unsubscribe();

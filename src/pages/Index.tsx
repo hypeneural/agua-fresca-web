@@ -599,7 +599,8 @@ const Index = () => {
       
       <Footer />
 
-      <style jsx="true">{`
+      <style>
+        {`
         ::-webkit-scrollbar {
           width: 8px;
           height: 8px;
@@ -638,7 +639,8 @@ const Index = () => {
             padding-right: 1rem !important;
           }
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
