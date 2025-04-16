@@ -599,7 +599,7 @@ const Index = () => {
       
       <Footer />
 
-      <style jsx global>{`
+      <style jsx="true">{`
         ::-webkit-scrollbar {
           width: 8px;
           height: 8px;

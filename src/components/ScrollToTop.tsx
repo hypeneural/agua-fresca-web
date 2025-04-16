@@ -25,7 +25,7 @@ const ScrollToTop = () => {
   return (
     <motion.button
       onClick={scrollToTop}
-      className="fixed bottom-6 left-6 z-50 bg-white text-pool-600 rounded-full p-3 shadow-lg hover:bg-pool-50 transition-colors duration-300"
+      className="fixed bottom-6 right-6 z-50 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
       style={{ opacity }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ 
@@ -36,16 +36,23 @@ const ScrollToTop = () => {
       whileTap={{ scale: 0.9 }}
       aria-label="Voltar ao topo"
     >
-      <motion.div
-        animate={{ y: [0, -3, 0] }}
-        transition={{ 
-          duration: 1.5, 
-          repeat: Infinity,
-          repeatType: "mirror"
-        }}
-      >
-        <ArrowUp size={20} />
-      </motion.div>
+      <div className="relative">
+        {/* 3D layered effect */}
+        <div className="absolute inset-0 bg-pool-700 rounded-full transform scale-105 blur-sm opacity-30"></div>
+        <div className="absolute inset-0 bg-pool-600 rounded-full transform scale-102"></div>
+        <div className="relative bg-gradient-to-br from-pool-500 to-pool-600 p-3 rounded-full text-white shadow-inner">
+          <motion.div
+            animate={{ y: [0, -3, 0] }}
+            transition={{ 
+              duration: 1.5, 
+              repeat: Infinity,
+              repeatType: "mirror"
+            }}
+          >
+            <ArrowUp size={20} />
+          </motion.div>
+        </div>
+      </div>
     </motion.button>
   );
 };
