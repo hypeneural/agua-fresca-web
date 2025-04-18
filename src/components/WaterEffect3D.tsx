@@ -26,33 +26,31 @@ const WaterEffect3D = ({
         perspective: "1000px" 
       }}
       whileHover={hoverEffect ? { 
-        z: 10,
-        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+        scale: 1.05,
+        boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
       } : undefined}
     >
       {/* Background gradient for 3D look */}
       <div className="absolute inset-0 bg-gradient-to-br from-pool-50/30 to-pool-200/20 z-0"></div>
       
-      {/* Water bubbles effect */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
-        {[...Array(bubblesCount)].map((_, i) => (
+      {/* Water bubbles effect - simplified to prevent errors */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {Array.from({ length: bubblesCount }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-pool-500/20"
             style={{
-              width: Math.random() * 30 + 10,
-              height: Math.random() * 30 + 10,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: Math.floor(Math.random() * 30 + 10),
+              height: Math.floor(Math.random() * 30 + 10),
+              left: `${Math.floor(Math.random() * 100)}%`,
+              top: `${Math.floor(Math.random() * 100)}%`,
             }}
             animate={{
               y: [0, -100],
-              x: [0, Math.random() * 20 - 10],
-              opacity: [0, 0.7, 0],
-              scale: [0, 1]
+              opacity: [0, 0.7, 0]
             }}
             transition={{
-              duration: Math.random() * 2 + 2,
+              duration: 2 + Math.random() * 2,
               repeat: Infinity,
               delay: Math.random() * 2,
               ease: "easeOut"
@@ -61,40 +59,10 @@ const WaterEffect3D = ({
         ))}
       </div>
       
-      {/* Water ripple effect */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <motion.div 
-          className="absolute rounded-full bg-pool-500/10"
-          style={{
-            width: "200%",
-            height: "200%",
-            left: "-50%",
-            top: "-50%",
-          }}
-          animate={{
-            scale: [0, 1],
-            opacity: [0.4, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatDelay: 1
-          }}
-        />
-      </div>
-      
       {/* Content with 3D effect */}
-      <motion.div 
-        className="relative z-10"
-        whileHover={hoverEffect ? { 
-          rotateX: 5,
-          rotateY: 5,
-          translateZ: 20
-        } : undefined}
-        style={{ transformStyle: "preserve-3d" }}
-      >
+      <div className="relative z-10">
         {children}
-      </motion.div>
+      </div>
       
       {/* Subtle shimmer effect */}
       <motion.div 

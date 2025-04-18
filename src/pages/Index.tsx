@@ -1,17 +1,9 @@
+
 import { 
   Droplet, 
-  Waves, 
-  Filter, 
-  Wrench, 
-  ShoppingBag, 
-  Sparkles, 
-  Leaf, 
-  Shield, 
   Phone, 
   Mail, 
   Clock, 
-  Thermometer, 
-  Zap,
   Award,
   Headphones
 } from "lucide-react";
@@ -29,10 +21,11 @@ import TrustBadges from "@/components/TrustBadges";
 import FAQ from "@/components/FAQ";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import SectionDivider from "@/components/SectionDivider";
-import ServiceAreaMap from "@/components/ServiceAreaMap";
 import WaterBackground from "@/components/WaterBackground";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { Helmet } from "react-helmet-async";
+import CustomServiceAreaMap from "@/components/CustomServiceAreaMap";
+import { services } from "@/data/services";
 
 const Index = () => {
   const handleWhatsAppClick = () => {
@@ -61,7 +54,41 @@ const Index = () => {
         <meta name="twitter:image" content="https://maiconpiscinas.com.br/bio/favicon.png" />
         <link rel="canonical" href="https://maiconpiscinas.com.br" />
         <meta name="theme-color" content="#0ea5e9" />
+        <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* Structured data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Maicon Piscinas",
+            "image": "https://maiconpiscinas.com.br/bio/favicon.png",
+            "description": "Serviços completos de limpeza, manutenção e instalação de equipamentos para piscinas em Tijucas e região",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tijucas",
+              "addressRegion": "SC",
+              "addressCountry": "BR"
+            },
+            "telephone": "+5548999232642",
+            "priceRange": "$$",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "13:00"
+              }
+            ],
+            "sameAs": ["https://www.facebook.com/maiconpiscinas", "https://www.instagram.com/maiconpiscinas"]
+          })}
+        </script>
       </Helmet>
       
       <Navbar />
@@ -182,60 +209,15 @@ const Index = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ServiceCard 
-              title="Limpeza e Tratamento Químico" 
-              description="Manutenção periódica da qualidade da água, tratamento químico completo e limpeza de todos os componentes."
-              icon={Droplet}
-              delay={0.1}
-            />
-            <ServiceCard 
-              title="Instalação de Equipamentos" 
-              description="Instalação profissional de bombas, filtros e demais equipamentos para garantir o funcionamento ideal da sua piscina."
-              icon={Wrench}
-              delay={0.2}
-            />
-            <ServiceCard 
-              title="Iluminação e Hidromassagem" 
-              description="Instalação de sistemas de iluminação e hidromassagem para maior conforto e elegância."
-              icon={Sparkles}
-              delay={0.3}
-            />
-            <ServiceCard 
-              title="Conserto de Bombas" 
-              description="Serviço especializado em manutenção preventiva e corretiva de bombas e motores para piscinas."
-              icon={Wrench}
-              delay={0.4}
-            />
-            <ServiceCard 
-              title="Recuperação de Água Verde" 
-              description="Tratamento especializado para recuperar piscinas com água verde, devolvendo a qualidade e transparência."
-              icon={Leaf}
-              delay={0.5}
-            />
-            <ServiceCard 
-              title="Troca de Areia" 
-              description="Substituição do elemento filtrante garantindo eficiência na filtragem e água mais limpa."
-              icon={Filter}
-              delay={0.6}
-            />
-            <ServiceCard 
-              title="Instalação de Aquecimentos" 
-              description="Instalação de sistemas de aquecimento elétrico, solar e trocador de calor para sua piscina."
-              icon={Thermometer}
-              delay={0.7}
-            />
-            <ServiceCard 
-              title="Instalação de Gerador de Cloro" 
-              description="Instalação de sistema automático de geração de cloro para tratamento contínuo da água."
-              icon={Zap}
-              delay={0.8}
-            />
-            <ServiceCard 
-              title="Capas Térmicas e de Proteção" 
-              description="Fornecimento e instalação de capas térmicas e de proteção para maior segurança e economia."
-              icon={Shield}
-              delay={0.9}
-            />
+            {services.map((service, index) => (
+              <ServiceCard 
+                key={index}
+                title={service.title} 
+                description={service.description}
+                icon={service.icon}
+                delay={service.delay}
+              />
+            ))}
           </div>
           
           <motion.div 
@@ -243,8 +225,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            viewport={{ once: true }}
           >
             <Button 
               className="bg-pool-600 hover:bg-pool-500 text-white btn-ripple"
@@ -252,7 +233,6 @@ const Index = () => {
               size="lg"
             >
               <motion.span 
-                className="mr-2" 
                 animate={{
                   rotate: [0, -10, 0, 10, 0],
                 }}
@@ -261,8 +241,9 @@ const Index = () => {
                   repeat: Infinity,
                   repeatDelay: 1,
                 }}
+                className="mr-2"
               >
-                <Sparkles className="w-5 h-5" />
+                <Droplet className="w-5 h-5" />
               </motion.span>
               Solicitar Orçamento
             </Button>
@@ -415,27 +396,21 @@ const Index = () => {
                   </svg>
                   <span className="relative z-10">Solicitar Orçamento</span>
                   
-                  {[...Array(5)].map((_, i) => (
-                    <motion.span
-                      key={i}
-                      className="absolute w-2 h-2 bg-white/30 rounded-full"
-                      style={{
-                        left: `${i * 20 + 10}%`,
-                        bottom: '-20px'
-                      }}
-                      animate={{
-                        y: [0, -40],
-                        opacity: [0, 0.5, 0],
-                        scale: [0, 1, 0]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                        repeatDelay: 1
-                      }}
-                    />
-                  ))}
+                  {/* Simplified animation to avoid errors */}
+                  <motion.span
+                    className="absolute w-2 h-2 bg-white/30 rounded-full"
+                    style={{ left: '40%', bottom: '-20px' }}
+                    animate={{
+                      y: [0, -40],
+                      opacity: [0, 0.5, 0]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 0.3,
+                      repeatDelay: 1
+                    }}
+                  />
                 </motion.button>
               </div>
             </motion.div>
@@ -447,7 +422,7 @@ const Index = () => {
               viewport={{ once: true }}
             >
               <h3 className="text-xl font-semibold mb-4 text-pool-700">Área de Atendimento</h3>
-              <ServiceAreaMap />
+              <CustomServiceAreaMap />
               <p className="text-gray-600 text-sm mt-4">
                 Atendemos Tijucas e todas as cidades em um raio de até 50km, incluindo Balneário Camboriú, 
                 Itapema, Porto Belo, São João Batista e região.
@@ -472,7 +447,7 @@ const Index = () => {
               <motion.div 
                 className="w-4 h-4 bg-white/10 rounded-full absolute top-10 left-10"
                 animate={{ 
-                  y: [0, 100, 0],
+                  y: [0, 100],
                   opacity: [0.2, 0.5, 0.2]
                 }} 
                 transition={{ 
@@ -484,23 +459,11 @@ const Index = () => {
               <motion.div 
                 className="w-6 h-6 bg-white/10 rounded-full absolute top-20 right-40"
                 animate={{ 
-                  y: [0, -80, 0],
+                  y: [0, -80],
                   opacity: [0.1, 0.4, 0.1]
                 }} 
                 transition={{ 
                   duration: 12,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              />
-              <motion.div 
-                className="w-8 h-8 bg-white/10 rounded-full absolute bottom-10 right-20"
-                animate={{ 
-                  y: [0, -120, 0],
-                  opacity: [0.2, 0.5, 0.2]
-                }} 
-                transition={{ 
-                  duration: 15,
                   repeat: Infinity,
                   repeatType: "reverse"
                 }}
@@ -513,6 +476,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
               >
                 Pronto para transformar seu espaço?
               </motion.h2>
@@ -521,6 +485,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
               >
                 Entre em contato agora mesmo e solicite um orçamento sem compromisso para o seu projeto.
               </motion.p>
@@ -529,6 +494,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
