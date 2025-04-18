@@ -1,13 +1,22 @@
 
-import { useState } from 'react';
-import { MapContainer, TileLayer, Circle, Marker, Popup } from 'react-leaflet';
-import { Icon } from 'leaflet';
+import { useState, useEffect, useRef } from 'react';
+import { MapContainer, TileLayer, Circle, Marker, Popup, useMap } from 'react-leaflet';
+import { Icon, LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import WaterEffect3D from './WaterEffect3D';
+
+// This component is needed to change the map center dynamically
+function ChangeMapView({ center, zoom }: { center: LatLngExpression, zoom: number }) {
+  const map = useMap();
+  useEffect(() => {
+    map.setView(center, zoom);
+  }, [center, zoom, map]);
+  
+  return null;
+}
 
 const ServiceAreaLeafletMap = () => {
   const [selectedCity, setSelectedCity] = useState<string>("tijucas");
@@ -40,6 +49,7 @@ const ServiceAreaLeafletMap = () => {
   });
 
   const selectedCityData = cities[selectedCity as keyof typeof cities];
+  const position: LatLngExpression = [selectedCityData.lat, selectedCityData.lng];
 
   return (
     <WaterEffect3D className="rounded-xl overflow-hidden" intensity="light">
@@ -73,22 +83,24 @@ const ServiceAreaLeafletMap = () => {
         
         <div className="h-[400px] md:h-auto md:col-span-2">
           <MapContainer
-            center={[selectedCityData.lat, selectedCityData.lng]}
-            zoom={11}
             style={{ height: "100%", width: "100%" }}
+            zoom={11}
+            scrollWheelZoom={false}
+            className="z-0"
           >
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            <Marker position={[selectedCityData.lat, selectedCityData.lng]} icon={customIcon}>
+            <Marker position={position} icon={customIcon}>
               <Popup>{selectedCityData.name}</Popup>
             </Marker>
-            <Circle
-              center={[selectedCityData.lat, selectedCityData.lng]}
-              radius={50000}
+            <Circle 
+              center={position}
               pathOptions={{ color: '#0ea5e9', fillColor: '#0ea5e9', fillOpacity: 0.1 }}
+              radius={50000}
             />
+            <ChangeMapView center={position} zoom={11} />
           </MapContainer>
         </div>
       </div>
