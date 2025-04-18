@@ -31,6 +31,8 @@ import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import SectionDivider from "@/components/SectionDivider";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
 import WaterBackground from "@/components/WaterBackground";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   const handleWhatsAppClick = () => {
@@ -44,6 +46,24 @@ const Index = () => {
         scrollbarColor: '#0ea5e9 #f1f5f9'
       }}
     >
+      <Helmet>
+        <title>Maicon Piscinas | Serviços de Piscinas em Tijucas e Região</title>
+        <meta name="description" content="Serviços completos de limpeza, manutenção e instalação de equipamentos para piscinas em Tijucas e região. Atendimento especializado e qualidade garantida." />
+        <meta name="keywords" content="piscinas, limpeza de piscinas, manutenção de piscinas, tratamento de água, instalação de equipamentos, Tijucas, Santa Catarina" />
+        <meta property="og:title" content="Maicon Piscinas | Serviços de Piscinas em Tijucas e Região" />
+        <meta property="og:description" content="Soluções completas em piscinas para residências e empresas em Tijucas e região. Qualidade e compromisso desde 2017." />
+        <meta property="og:image" content="https://maiconpiscinas.com.br/bio/favicon.png" />
+        <meta property="og:url" content="https://maiconpiscinas.com.br" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Maicon Piscinas | Serviços de Piscinas em Tijucas e Região" />
+        <meta name="twitter:description" content="Serviços completos para piscinas com atendimento personalizado e qualidade garantida." />
+        <meta name="twitter:image" content="https://maiconpiscinas.com.br/bio/favicon.png" />
+        <link rel="canonical" href="https://maiconpiscinas.com.br" />
+        <meta name="theme-color" content="#0ea5e9" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
+      
       <Navbar />
       <WhatsAppButton />
       <ScrollToTop />
@@ -132,6 +152,8 @@ const Index = () => {
                     src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
                     alt="Equipe Maicon Piscinas"
                     className="w-full h-full object-cover"
+                    width="600"
+                    height="400"
                   />
                 </motion.div>
               </div>
@@ -229,6 +251,19 @@ const Index = () => {
               onClick={handleWhatsAppClick}
               size="lg"
             >
+              <motion.span 
+                className="mr-2" 
+                animate={{
+                  rotate: [0, -10, 0, 10, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatDelay: 1,
+                }}
+              >
+                <Sparkles className="w-5 h-5" />
+              </motion.span>
               Solicitar Orçamento
             </Button>
           </motion.div>
@@ -262,269 +297,7 @@ const Index = () => {
       
       <SectionDivider type="curve" color="text-white" bgColor="fill-gray-50" />
       
-      <section className="section-padding">
-        <div className="container-custom">
-          <motion.div 
-            className="bg-gradient-to-r from-pool-700 to-pool-600 rounded-xl p-8 md:p-12 shadow-xl relative overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            {/* Enhanced 3D water background effect */}
-            <div className="absolute -top-24 -left-24 w-64 h-64 bg-pool-500/20 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-pool-400/20 rounded-full blur-3xl"></div>
-            
-            {/* Animated water bubbles */}
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full bg-white/10"
-                style={{
-                  width: Math.random() * 60 + 20,
-                  height: Math.random() * 60 + 20,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  filter: "blur(1px)"
-                }}
-                animate={{
-                  y: [0, -100 * Math.random() - 50],
-                  x: [0, 30 * Math.random() - 15],
-                  opacity: [0, 0.6, 0],
-                  scale: [0, 1]
-                }}
-                transition={{
-                  duration: Math.random() * 10 + 10,
-                  repeat: Infinity,
-                  delay: Math.random() * 5,
-                  ease: "easeOut"
-                }}
-              />
-            ))}
-            
-            <div className="relative z-10">
-              <motion.div 
-                className="text-center text-white max-w-3xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Por que escolher a Maicon Piscinas?</h2>
-              </motion.div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <motion.div 
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    background: "rgba(255,255,255,0.15)"
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <motion.div style={{ transform: "translateZ(20px)" }}>
-                    <h3 className="text-xl font-semibold mb-3">Compromisso com a Qualidade</h3>
-                    <p className="text-white/80">
-                      Garantimos que todos os serviços atendem aos mais altos padrões de qualidade, 
-                      utilizando os melhores produtos e técnicas para resultados duradouros.
-                    </p>
-                  </motion.div>
-                  
-                  {/* Water drop animation */}
-                  <motion.div 
-                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
-                    animate={{
-                      y: [0, 10, 0],
-                      opacity: [0.2, 0.5, 0.2]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
-                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
-                    </svg>
-                  </motion.div>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    background: "rgba(255,255,255,0.15)"
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <motion.div style={{ transform: "translateZ(20px)" }}>
-                    <h3 className="text-xl font-semibold mb-3">Satisfação do Cliente</h3>
-                    <p className="text-white/80">
-                      Nosso objetivo é a satisfação total dos nossos clientes, oferecendo serviços 
-                      personalizados com atenção especial às suas necessidades.
-                    </p>
-                  </motion.div>
-                  
-                  {/* Water drop animation */}
-                  <motion.div 
-                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
-                    animate={{
-                      y: [0, 10, 0],
-                      opacity: [0.2, 0.5, 0.2]
-                    }}
-                    transition={{ duration: 4, delay: 1, repeat: Infinity }}
-                  >
-                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
-                    </svg>
-                  </motion.div>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    background: "rgba(255,255,255,0.15)"
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <motion.div style={{ transform: "translateZ(20px)" }}>
-                    <h3 className="text-xl font-semibold mb-3">Profissionalismo e Ética</h3>
-                    <p className="text-white/80">
-                      Atuamos com transparência, respeito e responsabilidade em todas as nossas relações.
-                    </p>
-                  </motion.div>
-                  
-                  {/* Water drop animation */}
-                  <motion.div 
-                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
-                    animate={{
-                      y: [0, 10, 0],
-                      opacity: [0.2, 0.5, 0.2]
-                    }}
-                    transition={{ duration: 3.5, delay: 0.5, repeat: Infinity }}
-                  >
-                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
-                    </svg>
-                  </motion.div>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    background: "rgba(255,255,255,0.15)"
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <motion.div style={{ transform: "translateZ(20px)" }}>
-                    <h3 className="text-xl font-semibold mb-3">Inovação e Tecnologia</h3>
-                    <p className="text-white/80">
-                      Buscamos sempre novas tecnologias para oferecer soluções mais eficazes e eficientes.
-                    </p>
-                  </motion.div>
-                  
-                  {/* Water drop animation */}
-                  <motion.div 
-                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
-                    animate={{
-                      y: [0, 10, 0],
-                      opacity: [0.2, 0.5, 0.2]
-                    }}
-                    transition={{ duration: 4, delay: 1.5, repeat: Infinity }}
-                  >
-                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
-                    </svg>
-                  </motion.div>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    background: "rgba(255,255,255,0.15)"
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <motion.div style={{ transform: "translateZ(20px)" }}>
-                    <h3 className="text-xl font-semibold mb-3">Sustentabilidade</h3>
-                    <p className="text-white/80">
-                      Valorizamos práticas que promovem a preservação ambiental, utilizando produtos 
-                      sustentáveis e métodos que garantem a saúde e segurança de nossos clientes.
-                    </p>
-                  </motion.div>
-                  
-                  {/* Water drop animation */}
-                  <motion.div 
-                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
-                    animate={{
-                      y: [0, 10, 0],
-                      opacity: [0.2, 0.5, 0.2]
-                    }}
-                    transition={{ duration: 3.2, delay: 0.8, repeat: Infinity }}
-                  >
-                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
-                    </svg>
-                  </motion.div>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-white"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                    background: "rgba(255,255,255,0.15)"
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <motion.div style={{ transform: "translateZ(20px)" }}>
-                    <h3 className="text-xl font-semibold mb-3">Atendimento Personalizado</h3>
-                    <p className="text-white/80">
-                      Cada cliente é único, por isso oferecemos soluções personalizadas adaptadas às suas 
-                      necessidades específicas e orçamento, com atendimento exclusivo.
-                    </p>
-                  </motion.div>
-                  
-                  {/* Water drop animation */}
-                  <motion.div 
-                    className="absolute -bottom-2 -right-2 w-16 h-16 pointer-events-none"
-                    animate={{
-                      y: [0, 10, 0],
-                      opacity: [0.2, 0.5, 0.2]
-                    }}
-                    transition={{ duration: 3.8, delay: 1.2, repeat: Infinity }}
-                  >
-                    <svg viewBox="0 0 100 100" className="w-full h-full opacity-20">
-                      <path fill="#fff" d="M50,0 C50,0 65,40 65,70 C65,85 55,95 50,95 C45,95 35,85 35,70 C35,40 50,0 50,0 Z" />
-                    </svg>
-                  </motion.div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <WhyChooseUs />
       
       <SectionDivider type="triangle" color="text-gray-50" />
       
@@ -624,7 +397,7 @@ const Index = () => {
                 
                 <motion.button
                   onClick={handleWhatsAppClick}
-                  className="w-full bg-pool-600 hover:bg-pool-500 text-white py-3 px-4 rounded-lg mt-4 flex items-center justify-center gap-2 btn-ripple"
+                  className="w-full bg-pool-600 hover:bg-pool-500 text-white py-3 px-4 rounded-lg mt-4 flex items-center justify-center gap-2 btn-ripple overflow-hidden relative"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -636,10 +409,33 @@ const Index = () => {
                     fill="white"
                     stroke="currentColor"
                     strokeWidth="0"
+                    className="relative z-10"
                   >
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                   </svg>
-                  Solicitar Orçamento
+                  <span className="relative z-10">Solicitar Orçamento</span>
+                  
+                  {[...Array(5)].map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="absolute w-2 h-2 bg-white/30 rounded-full"
+                      style={{
+                        left: `${i * 20 + 10}%`,
+                        bottom: '-20px'
+                      }}
+                      animate={{
+                        y: [0, -40],
+                        opacity: [0, 0.5, 0],
+                        scale: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                        repeatDelay: 1
+                      }}
+                    />
+                  ))}
                 </motion.button>
               </div>
             </motion.div>
@@ -672,7 +468,6 @@ const Index = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            {/* Animated background dots */}
             <div className="absolute inset-0 overflow-hidden">
               <motion.div 
                 className="w-4 h-4 bg-white/10 rounded-full absolute top-10 left-10"
@@ -744,6 +539,17 @@ const Index = () => {
                     className="bg-white text-pool-700 hover:bg-gray-100 btn-ripple"
                     onClick={handleWhatsAppClick}
                   >
+                    <motion.span
+                      animate={{ rotate: [0, 5, 0, -5, 0] }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity,
+                        repeatDelay: 1
+                      }}
+                      className="mr-2"
+                    >
+                      <Award className="w-5 h-5" />
+                    </motion.span>
                     Solicitar Orçamento
                   </Button>
                 </motion.div>
@@ -762,6 +568,16 @@ const Index = () => {
                       }
                     }}
                   >
+                    <motion.span
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity
+                      }}
+                      className="mr-2"
+                    >
+                      <Phone className="w-5 h-5" />
+                    </motion.span>
                     Fale Conosco
                   </Button>
                 </motion.div>
