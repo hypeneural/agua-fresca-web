@@ -1,7 +1,6 @@
 
-import { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import TestimonialCard from './TestimonialCard';
 import { 
   Carousel,
@@ -57,41 +56,43 @@ const TestimonialsCarousel = () => {
   ];
 
   return (
-    <motion.div 
-      className="relative px-4 py-2"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: false, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
-    >
-      <Carousel
-        opts={{
-          align: "start",
-          loop: true
-        }}
-        className="max-w-5xl mx-auto"
+    <AnimatePresence>
+      <motion.div 
+        className="relative px-4 py-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <CarouselContent>
-          {testimonials.map((testimonial, index) => (
-            <CarouselItem key={index} className={isMobile ? "basis-full" : "basis-1/2"} >
-              <div className="p-1">
-                <TestimonialCard
-                  name={testimonial.name}
-                  location={testimonial.location}
-                  content={testimonial.content}
-                  rating={testimonial.rating}
-                  image={testimonial.image}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <div className="flex justify-center mt-4 gap-2 md:hidden">
-          <CarouselPrevious className="relative static left-0 right-auto translate-y-0 bg-white hover:bg-gray-100" />
-          <CarouselNext className="relative static right-0 left-auto translate-y-0 bg-white hover:bg-gray-100" />
-        </div>
-      </Carousel>
-    </motion.div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true
+          }}
+          className="max-w-5xl mx-auto"
+        >
+          <CarouselContent>
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className={isMobile ? "basis-full" : "basis-1/2"} >
+                <div className="p-1">
+                  <TestimonialCard
+                    name={testimonial.name}
+                    location={testimonial.location}
+                    content={testimonial.content}
+                    rating={testimonial.rating}
+                    image={testimonial.image}
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex justify-center mt-4 gap-2 md:hidden">
+            <CarouselPrevious className="relative static left-0 right-auto translate-y-0 bg-white hover:bg-gray-100" />
+            <CarouselNext className="relative static right-0 left-auto translate-y-0 bg-white hover:bg-gray-100" />
+          </div>
+        </Carousel>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

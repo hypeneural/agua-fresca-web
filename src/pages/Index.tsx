@@ -23,9 +23,10 @@ import SectionDivider from "@/components/SectionDivider";
 import WaterBackground from "@/components/WaterBackground";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { Helmet } from "react-helmet-async";
-import CustomServiceAreaMap from "@/components/CustomServiceAreaMap";
 import ServiceAreaLeafletMap from "@/components/ServiceAreaLeafletMap";
 import { services } from "@/data/services";
+import HeroWaterEffects from "@/components/HeroWaterEffects";
+import WaterDripAnimation from "@/components/WaterDripAnimation";
 
 const Index = () => {
   const handleWhatsAppClick = () => {
@@ -56,7 +57,6 @@ const Index = () => {
         <meta name="theme-color" content="#0ea5e9" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {/* Structured data for SEO */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -95,104 +95,108 @@ const Index = () => {
       <WhatsAppButton />
       <ScrollToTop />
       
-      <HeroSection />
+      <HeroWaterEffects>
+        <HeroSection />
+      </HeroWaterEffects>
       
       <TrustBadges />
       
       <section id="sobre" className="section-padding bg-gray-50 relative">
         <WaterBackground intensity="light" className="opacity-50" />
+        <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.3)" size="small" />
+        
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              className="order-2 lg:order-1"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 pb-3 title-underline">Sobre a Maicon Piscinas</h2>
-              <p className="text-gray-700 mb-4">
-                A Maicon Piscinas é uma empresa referência em manutenção de piscinas, limpeza de piscinas, 
-                instalação de equipamentos e reparos de piscinas em Tijucas, Santa Catarina. Com <strong>6+ anos de experiência</strong> no mercado, 
-                somos especializados em proporcionar soluções completas para piscinas, 
-                garantindo um serviço de qualidade e segurança para nossos clientes.
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <motion.div 
-                  className="text-center"
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="text-3xl font-bold text-pool-600">6+</div>
-                  <div className="text-gray-500 text-sm">Anos de Experiência</div>
-                </motion.div>
-                <motion.div 
-                  className="text-center"
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="text-3xl font-bold text-pool-600">200+</div>
-                  <div className="text-gray-500 text-sm">Projetos Realizados</div>
-                </motion.div>
-                <motion.div 
-                  className="text-center"
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="text-3xl font-bold text-pool-600">98%</div>
-                  <div className="text-gray-500 text-sm">Clientes Satisfeitos</div>
-                </motion.div>
-                <motion.div 
-                  className="text-center"
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="text-3xl font-bold text-pool-600">24h</div>
-                  <div className="text-gray-500 text-sm">Suporte Técnico</div>
-                </motion.div>
-              </div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+          <motion.div 
+            className="text-center max-w-2xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline">Sobre a Maicon Piscinas</h2>
+            <p className="text-gray-700 mb-4">
+              A Maicon Piscinas é uma empresa referência em manutenção de piscinas, limpeza de piscinas, 
+              instalação de equipamentos e reparos de piscinas em Tijucas, Santa Catarina. Com <strong>6+ anos de experiência</strong> no mercado, 
+              somos especializados em proporcionar soluções completas para piscinas, 
+              garantindo um serviço de qualidade e segurança para nossos clientes.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <motion.div 
+                className="text-center"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Button 
-                  className="bg-pool-600 hover:bg-pool-500 text-white btn-ripple"
-                  onClick={handleWhatsAppClick}
-                >
-                  Fale com um Especialista
-                </Button>
+                <div className="text-3xl font-bold text-pool-600">6+</div>
+                <div className="text-gray-500 text-sm">Anos de Experiência</div>
               </motion.div>
-            </motion.div>
-            <motion.div 
-              className="order-1 lg:order-2 relative"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
+              <motion.div 
+                className="text-center"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <div className="text-3xl font-bold text-pool-600">200+</div>
+                <div className="text-gray-500 text-sm">Projetos Realizados</div>
+              </motion.div>
+              <motion.div 
+                className="text-center"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <div className="text-3xl font-bold text-pool-600">98%</div>
+                <div className="text-gray-500 text-sm">Clientes Satisfeitos</div>
+              </motion.div>
+              <motion.div 
+                className="text-center"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <div className="text-3xl font-bold text-pool-600">24h</div>
+                <div className="text-gray-500 text-sm">Suporte Técnico</div>
+              </motion.div>
+            </div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <img 
-                    src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-                    alt="Equipe Maicon Piscinas"
-                    className="w-full h-full object-cover"
-                    width="600"
-                    height="400"
-                  />
-                </motion.div>
-              </div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-pool-500/20 rounded-lg -z-10 blur-md"></div>
+              <Button 
+                className="bg-pool-600 hover:bg-pool-500 text-white btn-ripple"
+                onClick={handleWhatsAppClick}
+              >
+                Fale com um Especialista
+              </Button>
             </motion.div>
-          </div>
+          </motion.div>
+          <motion.div 
+            className="order-1 lg:order-2 relative"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5 }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                  alt="Equipe Maicon Piscinas"
+                  className="w-full h-full object-cover"
+                  width="600"
+                  height="400"
+                />
+              </motion.div>
+            </div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-pool-500/20 rounded-lg -z-10 blur-md"></div>
+          </motion.div>
         </div>
       </section>
       
       <SectionDivider type="wave" bgColor="fill-white" color="text-gray-50" />
       
-      <section id="servicos" className="section-padding">
+      <section id="servicos" className="section-padding relative">
+        <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.2)" />
+        
         <div className="container-custom">
           <motion.div 
             className="text-center max-w-2xl mx-auto mb-16"
@@ -253,7 +257,9 @@ const Index = () => {
       
       <SectionDivider type="angle" color="text-gray-50" />
       
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 relative">
+        <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.2)" size="medium" />
+        
         <div className="container-custom">
           <motion.div 
             className="text-center max-w-2xl mx-auto mb-16"
@@ -282,14 +288,16 @@ const Index = () => {
       
       <SectionDivider type="triangle" color="text-gray-50" />
       
-      <section id="depoimentos" className="section-padding bg-gray-50">
+      <section id="depoimentos" className="section-padding bg-gray-50 relative">
+        <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.2)" />
+        
         <div className="container-custom">
           <motion.div 
             className="text-center max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline-center">O Que Nossos Clientes Dizem</h2>
             <p className="text-gray-600">
@@ -396,7 +404,6 @@ const Index = () => {
                   </svg>
                   <span className="relative z-10">Solicitar Orçamento</span>
                   
-                  {/* Simplified animation to avoid errors */}
                   <motion.span
                     className="absolute w-2 h-2 bg-white/30 rounded-full"
                     style={{ left: '40%', bottom: '-20px' }}
@@ -575,7 +582,6 @@ const Index = () => {
           background: #0284c7;
         }
         
-        /* Mobile optimizations */
         @media (max-width: 768px) {
           .section-padding {
             padding-top: 3rem;
@@ -596,13 +602,11 @@ const Index = () => {
           }
         }
         
-        /* Enhanced 3D effects */
         .card-3d {
           transform-style: preserve-3d;
           perspective: 1000px;
         }
         
-        /* Enhanced water effects */
         .water-ripple {
           position: relative;
           overflow: hidden;
