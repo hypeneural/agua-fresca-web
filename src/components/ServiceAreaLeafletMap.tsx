@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Circle, Marker, Popup, useMap } from 'react-leaflet';
 import { Icon, LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -83,16 +83,19 @@ const ServiceAreaLeafletMap = () => {
         
         <div className="h-[400px] md:h-auto md:col-span-2">
           <MapContainer
-            style={{ height: "100%", width: "100%" }}
+            center={position}
             zoom={11}
             scrollWheelZoom={false}
+            style={{ height: "100%", width: "100%" }}
             className="z-0"
           >
             <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={position} icon={customIcon}>
+            <Marker 
+              position={position}
+            >
               <Popup>{selectedCityData.name}</Popup>
             </Marker>
             <Circle 
