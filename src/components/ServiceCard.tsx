@@ -16,7 +16,8 @@ const ServiceCard = ({ title, description, icon: Icon, className, delay = 0 }: S
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: delay }}
+      viewport={{ once: false, margin: "-50px" }}
+      transition={{ duration: 0.5, delay }}
       whileHover={{ 
         y: -10,
         transition: { duration: 0.2 }

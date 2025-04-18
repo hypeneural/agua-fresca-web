@@ -57,7 +57,13 @@ const TestimonialsCarousel = () => {
   ];
 
   return (
-    <div className="relative px-4 py-2">
+    <motion.div 
+      className="relative px-4 py-2"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, margin: "-50px" }}
+      transition={{ duration: 0.5 }}
+    >
       <Carousel
         opts={{
           align: "start",
@@ -85,7 +91,7 @@ const TestimonialsCarousel = () => {
           <CarouselNext className="relative static right-0 left-auto translate-y-0 bg-white hover:bg-gray-100" />
         </div>
       </Carousel>
-    </div>
+    </motion.div>
   );
 };
 
