@@ -87,14 +87,15 @@ const ServiceAreaLeafletMap = () => {
         
         <div className="h-[400px] md:h-auto md:col-span-2">
           <MapContainer
-            defaultCenter={[cities.tijucas.lat, cities.tijucas.lng]}
-            defaultZoom={11}
+            center={[cities.tijucas.lat, cities.tijucas.lng]}
+            zoom={11}
             scrollWheelZoom={false}
             style={{ height: "100%", width: "100%" }}
             className="z-0"
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
             />
             <Marker position={position}>
               <Popup>{selectedCityData.name}</Popup>
@@ -102,6 +103,7 @@ const ServiceAreaLeafletMap = () => {
             <Circle 
               center={position}
               pathOptions={{ color: '#0ea5e9', fillColor: '#0ea5e9', fillOpacity: 0.1 }}
+              radius={50000}
             >
               <Popup>Área de atendimento: 50km ao redor de {selectedCityData.name}</Popup>
             </Circle>
