@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import L from 'leaflet';
 import { MapContainer, TileLayer, Circle, Marker, Popup, useMap } from 'react-leaflet';
 import { Icon, LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -97,7 +98,10 @@ const ServiceAreaLeafletMap = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            <Marker position={position} icon={customIcon}>
+            <Marker 
+              position={position} 
+              icon={customIcon}
+            >
               <Popup>{selectedCityData.name}</Popup>
             </Marker>
             <Circle 
