@@ -23,7 +23,7 @@ import SectionDivider from "@/components/SectionDivider";
 import WaterBackground from "@/components/WaterBackground";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { Helmet } from "react-helmet-async";
-import ServiceAreaLeafletMap from "@/components/ServiceAreaLeafletMap";
+import CustomServiceAreaMap from "@/components/CustomServiceAreaMap";
 import { services } from "@/data/services";
 import HeroWaterEffects from "@/components/HeroWaterEffects";
 import WaterDripAnimation from "@/components/WaterDripAnimation";
@@ -429,7 +429,7 @@ const Index = () => {
               viewport={{ once: true }}
             >
               <h3 className="text-xl font-semibold mb-4 text-pool-700">Área de Atendimento</h3>
-              <ServiceAreaLeafletMap />
+              <CustomServiceAreaMap />
               <p className="text-gray-600 text-sm mt-4">
                 Atendemos Tijucas e todas as cidades em um raio de até 50km, incluindo Balneário Camboriú, 
                 Itapema, Porto Belo, São João Batista e região.
