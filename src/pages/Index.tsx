@@ -107,20 +107,20 @@ const Index = () => {
         
         <div className="container-custom">
           <motion.div 
-            className="text-center max-w-2xl mx-auto mb-16"
+            className="text-center max-w-2xl mx-auto mb-10 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline">Sobre a Maicon Piscinas</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline">Sobre a Maicon Piscinas</h2>
             <p className="text-gray-700 mb-4">
               A Maicon Piscinas é uma empresa referência em manutenção de piscinas, limpeza de piscinas, 
               instalação de equipamentos e reparos de piscinas em Tijucas, Santa Catarina. Com <strong>6+ anos de experiência</strong> no mercado, 
               somos especializados em proporcionar soluções completas para piscinas, 
               garantindo um serviço de qualidade e segurança para nossos clientes.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mb-6">
               <motion.div 
                 className="text-center"
                 whileHover={{ y: -5 }}
@@ -199,20 +199,20 @@ const Index = () => {
         
         <div className="container-custom">
           <motion.div 
-            className="text-center max-w-2xl mx-auto mb-16"
+            className="text-center max-w-2xl mx-auto mb-10 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline-center">Nossos Serviços</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline-center">Nossos Serviços</h2>
             <p className="text-gray-600">
               Oferecemos soluções completas para sua piscina, desde a instalação até a manutenção, 
               garantindo a qualidade e durabilidade do seu investimento.
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {services.map((service, index) => (
               <ServiceCard 
                 key={index}
@@ -225,7 +225,7 @@ const Index = () => {
           </div>
           
           <motion.div 
-            className="text-center mt-12"
+            className="text-center mt-10 md:mt-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -262,13 +262,13 @@ const Index = () => {
         
         <div className="container-custom">
           <motion.div 
-            className="text-center max-w-2xl mx-auto mb-16"
+            className="text-center max-w-2xl mx-auto mb-10 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline-center">Transformações Incríveis</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline-center">Transformações Incríveis</h2>
             <p className="text-gray-600">
               Veja o antes e depois dos nossos serviços e descubra como podemos transformar sua piscina.
             </p>
@@ -293,13 +293,13 @@ const Index = () => {
         
         <div className="container-custom">
           <motion.div 
-            className="text-center max-w-2xl mx-auto mb-10"
+            className="text-center max-w-2xl mx-auto mb-8 md:mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: "-50px" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 pb-3 title-underline-center">O Que Nossos Clientes Dizem</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline-center">O Que Nossos Clientes Dizem</h2>
             <p className="text-gray-600">
               A satisfação dos nossos clientes é o nosso melhor indicador de qualidade. 
               Confira alguns depoimentos de quem já contratou nossos serviços.
@@ -323,26 +323,26 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="mb-10"
+            className="mb-8 md:mb-10"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 pb-3 title-underline text-center md:text-left">Entre em Contato</h2>
-            <p className="text-gray-700 mb-8 text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 pb-3 title-underline text-center md:text-left">Entre em Contato</h2>
+            <p className="text-gray-700 mb-6 md:mb-8 text-center md:text-left">
               Estamos prontos para atender você e oferecer as melhores soluções para sua piscina. 
               Entre em contato diretamente pelos nossos canais de atendimento.
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-white p-5 md:p-6 rounded-lg shadow-md"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
             >
-              <h3 className="text-xl font-semibold mb-4 text-pool-700">Informações de Contato</h3>
-              <div className="space-y-6">
+              <h3 className="text-lg md:text-xl font-semibold mb-4 text-pool-700">Informações de Contato</h3>
+              <div className="space-y-4 md:space-y-6">
                 <div className="flex items-start">
                   <div className="bg-pool-600 text-white p-2 rounded-full mr-4">
                     <Phone className="w-5 h-5" />
@@ -427,8 +427,9 @@ const Index = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
+              className="rounded-lg overflow-hidden"
             >
-              <h3 className="text-xl font-semibold mb-4 text-pool-700">Área de Atendimento</h3>
+              <h3 className="text-lg md:text-xl font-semibold mb-4 text-pool-700">Área de Atendimento</h3>
               <CustomServiceAreaMap />
               <p className="text-gray-600 text-sm mt-4">
                 Atendemos Tijucas e todas as cidades em um raio de até 50km, incluindo Balneário Camboriú, 
@@ -441,10 +442,10 @@ const Index = () => {
       
       <SectionDivider type="angle" color="text-gray-50" />
       
-      <section className="py-12 bg-gray-50">
+      <section className="py-8 md:py-12 bg-gray-50">
         <div className="container-custom">
           <motion.div 
-            className="bg-gradient-to-r from-pool-700 to-pool-600 rounded-xl py-12 px-8 text-center text-white shadow-xl relative overflow-hidden"
+            className="bg-gradient-to-r from-pool-700 to-pool-600 rounded-xl py-8 md:py-12 px-6 md:px-8 text-center text-white shadow-xl relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -479,7 +480,7 @@ const Index = () => {
             
             <div className="relative z-10">
               <motion.h2 
-                className="text-3xl md:text-4xl font-bold mb-4"
+                className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -488,7 +489,7 @@ const Index = () => {
                 Pronto para transformar seu espaço?
               </motion.h2>
               <motion.p 
-                className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
+                className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -509,7 +510,7 @@ const Index = () => {
                 >
                   <Button 
                     size="lg" 
-                    className="bg-white text-pool-700 hover:bg-gray-100 btn-ripple"
+                    className="bg-white text-pool-700 hover:bg-gray-100 btn-ripple w-full sm:w-auto"
                     onClick={handleWhatsAppClick}
                   >
                     <motion.span
@@ -533,7 +534,7 @@ const Index = () => {
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="bg-pool-600 text-white border-white hover:bg-pool-700 btn-ripple"
+                    className="bg-pool-600 text-white border-white hover:bg-pool-700 btn-ripple w-full sm:w-auto"
                     onClick={() => {
                       const contactSection = document.getElementById("contato");
                       if (contactSection) {
@@ -584,8 +585,8 @@ const Index = () => {
         
         @media (max-width: 768px) {
           .section-padding {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
           }
           
           h2 {
