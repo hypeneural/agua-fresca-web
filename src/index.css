@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -205,6 +204,10 @@
 
 /* Mobile Optimizations */
 @media (max-width: 640px) {
+  html {
+    font-size: 14px; /* Slightly reduce base font size for better fit */
+  }
+  
   .section-padding {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -231,6 +234,7 @@
   .container-custom {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
+    width: 100% !important;
   }
   
   .grid {
@@ -244,4 +248,173 @@
   .before-after-comparison .comparison-container {
     aspect-ratio: 4 / 3;
   }
+  
+  /* Adjust button sizes on mobile */
+  .button-group {
+    @apply flex flex-col sm:flex-row gap-2;
+  }
+  
+  /* Improved mobile spacing */
+  .mobile-stack > * + * {
+    @apply mt-3;
+  }
+  
+  /* Touch target size improvements */
+  button, a {
+    @apply min-h-[44px];
+  }
+  
+  /* Better form handling */
+  input, select, textarea {
+    @apply text-base; /* Prevent iOS zoom on focus */
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .container-custom {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+@layer utilities {
+  /* Animation Utilities */
+  .animate-reveal {
+    @apply opacity-0 transition-all duration-700 ease-out;
+  }
+  
+  .animate-reveal-visible {
+    @apply opacity-100;
+  }
+  
+  .animate-delay-100 {
+    @apply delay-100;
+  }
+  
+  .animate-delay-200 {
+    @apply delay-200;
+  }
+  
+  .animate-delay-300 {
+    @apply delay-300;
+  }
+  
+  .animate-delay-400 {
+    @apply delay-400;
+  }
+  
+  .animate-delay-500 {
+    @apply delay-500;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-transform duration-300 ease-out hover:-translate-y-1;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out hover:scale-[1.02];
+  }
+  
+  .hover-glow {
+    @apply transition-shadow duration-300 ease-out hover:shadow-lg;
+  }
+  
+  .hover-lift-glow {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  /* Text Animation Utilities */
+  .text-gradient-animate {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pool-500 to-pool-700 bg-size-200 animate-gradient;
+  }
+  
+  /* Parallax and Depth */
+  .depth-1 {
+    @apply relative z-10;
+  }
+  
+  .depth-2 {
+    @apply relative z-20;
+  }
+  
+  .depth-3 {
+    @apply relative z-30;
+  }
+
+  .depth-background {
+    @apply relative -z-10;
+  }
+
+  /* Mobile-First Responsive Helpers */
+  .sm-only {
+    @apply block sm:hidden;
+  }
+  
+  .md-up {
+    @apply hidden md:block;
+  }
+  
+  .md-down {
+    @apply block md:hidden;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes floatingY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatingX {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Apply animations */
+.animate-float-y {
+  animation: floatingY 3s ease-in-out infinite;
+}
+
+.animate-float-x {
+  animation: floatingX 4s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+}
+
+/* Background size utilities */
+.bg-size-200 {
+  background-size: 200% 200%;
 }

@@ -1,3 +1,4 @@
+
 import { 
   Droplet, 
   Phone, 
@@ -28,10 +29,27 @@ import { services } from "@/data/services";
 import HeroWaterEffects from "@/components/HeroWaterEffects";
 import WaterDripAnimation from "@/components/WaterDripAnimation";
 
+// Import new animation components
+import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
+import { AnimatedSection } from "@/components/animations/AnimatedSection";
+import { ParallaxEffect } from "@/components/animations/ParallaxEffect";
+import { ParticlesEffect } from "@/components/animations/ParticlesEffect";
+import { MaskReveal } from "@/components/animations/MaskReveal";
+import { AnimatedGradient } from "@/components/animations/AnimatedGradient";
+import { ScrollToSection } from "@/components/animations/ScrollToSection";
+
 const Index = () => {
   const handleWhatsAppClick = () => {
     window.open("https://api.whatsapp.com/send/?phone=5548999232642", "_blank");
   };
+
+  // Define sections for ScrollToSection component
+  const mainSections = [
+    { id: "sobre", label: "Sobre" },
+    { id: "servicos", label: "Serviços" },
+    { id: "depoimentos", label: "Depoimentos" },
+    { id: "contato", label: "Contato" },
+  ];
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden" 
@@ -94,6 +112,7 @@ const Index = () => {
       <Navbar />
       <WhatsAppButton />
       <ScrollToTop />
+      <ScrollToSection sections={mainSections} />
       
       <HeroWaterEffects>
         <HeroSection />
@@ -104,14 +123,12 @@ const Index = () => {
       <section id="sobre" className="section-padding bg-gray-50 relative">
         <WaterBackground intensity="light" className="opacity-50" />
         <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.3)" size="small" />
+        <ParticlesEffect count={10} type="water" color="rgba(14, 165, 233, 0.2)" />
         
         <div className="container-custom">
-          <motion.div 
+          <AnimatedSection 
             className="text-center max-w-2xl mx-auto mb-10 md:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            direction="up"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline">Sobre a Maicon Piscinas</h2>
             <p className="text-gray-700 mb-4">
@@ -126,7 +143,9 @@ const Index = () => {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="text-3xl font-bold text-pool-600">6+</div>
+                <div className="text-3xl font-bold text-pool-600">
+                  <AnimatedCounter end={6} suffix="+" />
+                </div>
                 <div className="text-gray-500 text-sm">Anos de Experiência</div>
               </motion.div>
               <motion.div 
@@ -134,7 +153,9 @@ const Index = () => {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="text-3xl font-bold text-pool-600">200+</div>
+                <div className="text-3xl font-bold text-pool-600">
+                  <AnimatedCounter end={200} suffix="+" duration={2.5} />
+                </div>
                 <div className="text-gray-500 text-sm">Projetos Realizados</div>
               </motion.div>
               <motion.div 
@@ -142,7 +163,9 @@ const Index = () => {
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="text-3xl font-bold text-pool-600">98%</div>
+                <div className="text-3xl font-bold text-pool-600">
+                  <AnimatedCounter end={98} suffix="%" duration={2.2} />
+                </div>
                 <div className="text-gray-500 text-sm">Clientes Satisfeitos</div>
               </motion.div>
               <motion.div 
@@ -165,14 +188,9 @@ const Index = () => {
                 Fale com um Especialista
               </Button>
             </motion.div>
-          </motion.div>
-          <motion.div 
-            className="order-1 lg:order-2 relative"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
+          </AnimatedSection>
+          
+          <MaskReveal direction="left" className="order-1 lg:order-2 relative">
             <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
               <motion.div
                 whileHover={{ scale: 1.03 }}
@@ -184,11 +202,12 @@ const Index = () => {
                   className="w-full h-full object-cover"
                   width="600"
                   height="400"
+                  loading="lazy"
                 />
               </motion.div>
             </div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-pool-500/20 rounded-lg -z-10 blur-md"></div>
-          </motion.div>
+          </MaskReveal>
         </div>
       </section>
       
@@ -196,21 +215,19 @@ const Index = () => {
       
       <section id="servicos" className="section-padding relative">
         <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.2)" />
+        <ParticlesEffect count={8} type="circle" />
         
         <div className="container-custom">
-          <motion.div 
+          <AnimatedSection 
             className="text-center max-w-2xl mx-auto mb-10 md:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            direction="up"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline-center">Nossos Serviços</h2>
             <p className="text-gray-600">
               Oferecemos soluções completas para sua piscina, desde a instalação até a manutenção, 
               garantindo a qualidade e durabilidade do seu investimento.
             </p>
-          </motion.div>
+          </AnimatedSection>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {services.map((service, index) => (
@@ -224,12 +241,10 @@ const Index = () => {
             ))}
           </div>
           
-          <motion.div 
+          <AnimatedSection 
             className="text-center mt-10 md:mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
+            direction="up"
+            delay={0.2}
           >
             <Button 
               className="bg-pool-600 hover:bg-pool-500 text-white btn-ripple"
@@ -251,7 +266,7 @@ const Index = () => {
               </motion.span>
               Solicitar Orçamento
             </Button>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
       
@@ -259,25 +274,30 @@ const Index = () => {
       
       <section className="section-padding bg-gray-50 relative">
         <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.2)" size="medium" />
+        <ParallaxEffect speed={0.3}>
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-1/4 left-1/4 w-40 h-40 rounded-full bg-pool-300 filter blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-40 h-40 rounded-full bg-pool-400 filter blur-3xl"></div>
+          </div>
+        </ParallaxEffect>
         
         <div className="container-custom">
-          <motion.div 
+          <AnimatedSection 
             className="text-center max-w-2xl mx-auto mb-10 md:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            direction="up"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline-center">Transformações Incríveis</h2>
             <p className="text-gray-600">
               Veja o antes e depois dos nossos serviços e descubra como podemos transformar sua piscina.
             </p>
-          </motion.div>
+          </AnimatedSection>
           
           <BeforeAfterComparison 
             beforeImage="https://maiconpiscinas.com.br/antes.png"
             afterImage="https://maiconpiscinas.com.br/depois.png"
             className="max-w-4xl mx-auto"
+            beforeLabel="Antes"
+            afterLabel="Depois"
           />
         </div>
       </section>
@@ -290,21 +310,19 @@ const Index = () => {
       
       <section id="depoimentos" className="section-padding bg-gray-50 relative">
         <WaterDripAnimation intensity="light" color="rgba(14, 165, 233, 0.2)" />
+        <ParticlesEffect count={12} minSize={3} maxSize={12} />
         
         <div className="container-custom">
-          <motion.div 
+          <AnimatedSection 
             className="text-center max-w-2xl mx-auto mb-8 md:mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: "-50px" }}
+            direction="up"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 pb-3 title-underline-center">O Que Nossos Clientes Dizem</h2>
             <p className="text-gray-600">
               A satisfação dos nossos clientes é o nosso melhor indicador de qualidade. 
               Confira alguns depoimentos de quem já contratou nossos serviços.
             </p>
-          </motion.div>
+          </AnimatedSection>
           
           <TestimonialsCarousel />
         </div>
@@ -318,11 +336,8 @@ const Index = () => {
       
       <section id="contato" className="section-padding">
         <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+          <AnimatedSection
+            direction="up"
             className="mb-8 md:mb-10"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 pb-3 title-underline text-center md:text-left">Entre em Contato</h2>
@@ -330,16 +345,13 @@ const Index = () => {
               Estamos prontos para atender você e oferecer as melhores soluções para sua piscina. 
               Entre em contato diretamente pelos nossos canais de atendimento.
             </p>
-          </motion.div>
+          </AnimatedSection>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <motion.div 
+            <AnimatedSection 
               className="bg-white p-5 md:p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
+              direction="left"
+              delay={0.1}
             >
               <h3 className="text-lg md:text-xl font-semibold mb-4 text-pool-700">Informações de Contato</h3>
               <div className="space-y-4 md:space-y-6">
@@ -420,13 +432,11 @@ const Index = () => {
                   />
                 </motion.button>
               </div>
-            </motion.div>
+            </AnimatedSection>
             
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
+            <AnimatedSection
+              direction="right"
+              delay={0.2}
               className="rounded-lg overflow-hidden"
             >
               <h3 className="text-lg md:text-xl font-semibold mb-4 text-pool-700">Área de Atendimento</h3>
@@ -435,7 +445,7 @@ const Index = () => {
                 Atendemos Tijucas e todas as cidades em um raio de até 50km, incluindo Balneário Camboriú, 
                 Itapema, Porto Belo, São João Batista e região.
               </p>
-            </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -444,12 +454,10 @@ const Index = () => {
       
       <section className="py-8 md:py-12 bg-gray-50">
         <div className="container-custom">
-          <motion.div 
-            className="bg-gradient-to-r from-pool-700 to-pool-600 rounded-xl py-8 md:py-12 px-6 md:px-8 text-center text-white shadow-xl relative overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+          <AnimatedGradient
+            colorFrom="rgba(14, 165, 233, 0.8)"
+            colorTo="rgba(2, 132, 199, 0.9)"
+            className="rounded-xl py-8 md:py-12 px-6 md:px-8 text-center text-white shadow-xl relative overflow-hidden"
           >
             <div className="absolute inset-0 overflow-hidden">
               <motion.div 
@@ -479,30 +487,23 @@ const Index = () => {
             </div>
             
             <div className="relative z-10">
-              <motion.h2 
+              <AnimatedSection 
+                direction="up"
                 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
               >
                 Pronto para transformar seu espaço?
-              </motion.h2>
-              <motion.p 
+              </AnimatedSection>
+              <AnimatedSection 
+                direction="up"
+                delay={0.1}
                 className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
               >
                 Entre em contato agora mesmo e solicite um orçamento sem compromisso para o seu projeto.
-              </motion.p>
-              <motion.div 
+              </AnimatedSection>
+              <AnimatedSection 
+                direction="up"
+                delay={0.2}
                 className="flex flex-col sm:flex-row justify-center gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -555,9 +556,9 @@ const Index = () => {
                     Fale Conosco
                   </Button>
                 </motion.div>
-              </motion.div>
+              </AnimatedSection>
             </div>
-          </motion.div>
+          </AnimatedGradient>
         </div>
       </section>
       
